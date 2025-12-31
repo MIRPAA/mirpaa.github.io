@@ -1,22 +1,17 @@
 #!/usr/bin/env python3
-"""
-Generate the static website from Mako templates and text files.
-"""
 import subprocess
-import sys
 import pathlib
-import mako.template
 import datetime
+import click
+import mako.template
 
 
 def read_text_file(filepath: pathlib.Path) -> str:
-    """Read a text file and return its contents."""
     with open(filepath, "r", encoding="utf-8") as f:
         return f.read().strip()
 
 
 def load_staff_member(member_dir: pathlib.Path) -> dict:
-    """Load staff member data from a directory."""
     return {
         "name": read_text_file(member_dir / "name.txt"),
         "title": read_text_file(member_dir / "title.txt"),
@@ -26,7 +21,6 @@ def load_staff_member(member_dir: pathlib.Path) -> dict:
 
 
 def run_precommit() -> bool:
-    """Run pre-commit hooks on all files. Returns True if successful."""
     result = subprocess.run(
         ["pre-commit", "run", "--all-files"],
         capture_output=True,
@@ -35,58 +29,68 @@ def run_precommit() -> bool:
     return result.returncode == 0
 
 
-def main():
-    """Generate the index.html file from the Mako template."""
-    templates_dir = pathlib.Path("templates")
-
-    # Read welcome text
-    welcome_text = read_text_file(templates_dir / "welcome.txt")
-
-    # Load all staff members (in a specific order)
-    staff_order = ["orly", "dafi", "nurse", "dietitian", "psychologist"]
+def load_staff_members(templates_dir: pathlib.Path) -> list[dict]:
     staff_members = []
+    member_dirs = sorted([d for d in templates_dir.iterdir() if d.is_dir()])
 
-    for member_id in staff_order:
-        member_dir = templates_dir / member_id
-        if member_dir.exists():
-            staff_members.append(load_staff_member(member_dir))
+    for member_dir in member_dirs:
+        staff_members.append(load_staff_member(member_dir))
 
-    # Prepare template context
+    return staff_members
+
+
+def prepare_template_context(welcome_text: str, staff_members: list[dict]) -> dict:
     generation_timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    context = {
+    return {
         "welcome_text": welcome_text,
         "staff_members": staff_members,
         "generation_timestamp": generation_timestamp,
     }
 
-    # Load and render the template
+
+def render_template(templates_dir: pathlib.Path, context: dict) -> str:
     template_path = templates_dir / "index.html.mako"
     template = mako.template.Template(filename=str(template_path), input_encoding="utf-8")
-    output = template.render(**context)
+    return template.render(**context)
 
-    # Write the output to docs/index.html
+
+def write_output(output: str) -> pathlib.Path:
     output_path = pathlib.Path("docs") / "index.html"
-    output_path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(output)
 
-    print(f"✓ Generated {output_path}")
-    print(f"  - Loaded {len(staff_members)} staff members")
+    return output_path
 
-    # Run pre-commit hooks up to 3 times
-    print("\nRunning pre-commit hooks...")
-    max_attempts = 3
+
+def run_precommit_with_retries(max_attempts: int = 3):
+    click.echo("\nRunning pre-commit hooks...")
     for attempt in range(1, max_attempts + 1):
-        print(f"  Attempt {attempt}/{max_attempts}...")
+        click.echo(f"  Attempt {attempt}/{max_attempts}...")
         if run_precommit():
-            print("✓ Pre-commit hooks passed")
+            click.secho("✓ Pre-commit hooks passed", fg="green")
             break
         elif attempt < max_attempts:
-            print(f"  ⚠ Pre-commit modified files, retrying...")
+            click.secho(f"  ⚠ Pre-commit modified files, retrying...", fg="yellow")
         else:
-            print("✗ Pre-commit hooks failed after 3 attempts")
-            sys.exit(1)
+            click.secho("✗ Pre-commit hooks failed after 3 attempts", fg="red")
+            raise click.Abort()
+
+
+@click.command()
+def main():
+    templates_dir = pathlib.Path("templates")
+
+    welcome_text = read_text_file(templates_dir / "welcome.txt")
+    staff_members = load_staff_members(templates_dir)
+    context = prepare_template_context(welcome_text, staff_members)
+    output = render_template(templates_dir, context)
+    output_path = write_output(output)
+
+    click.secho(f"✓ Generated {output_path}", fg="green")
+    click.secho(f"  - Loaded {len(staff_members)} staff members", fg="green")
+
+    run_precommit_with_retries()
 
 
 if __name__ == "__main__":
