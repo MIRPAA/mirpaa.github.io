@@ -1,0 +1,261 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Top Bar */
+.top-bar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo img {
+    height: 60px;
+    width: auto;
+    border-radius: 8px;
+    background: white;
+    padding: 5px;
+}
+
+.quick-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.quick-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    font-weight: 500;
+}
+
+.quick-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.link-whatsapp:hover {
+    background: #25D366;
+}
+
+.link-maccabi:hover {
+    background: #0066cc;
+}
+
+.link-maps:hover {
+    background: #4285F4;
+}
+
+/* Welcome Section */
+.welcome-section {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.welcome-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.welcome-text {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Staff Section */
+.staff-section {
+    padding: 60px 0;
+    background: white;
+}
+
+.staff-section h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    color: #667eea;
+}
+
+.staff-member {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 50px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.staff-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.staff-image {
+    flex-shrink: 0;
+}
+
+.staff-image img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #667eea;
+}
+
+.placeholder-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    border: 5px solid #667eea;
+}
+
+.staff-info h3 {
+    font-size: 1.8rem;
+    color: #667eea;
+    margin-bottom: 5px;
+}
+
+.staff-title {
+    font-size: 1.1rem;
+    color: #764ba2;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.staff-bio {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+/* Footer */
+footer {
+    background: #2d3748;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    .welcome-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .welcome-text {
+        font-size: 1rem;
+    }
+
+    .staff-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .staff-member {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .staff-image img,
+    .placeholder-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .placeholder-image {
+        font-size: 3rem;
+    }
+
+    .staff-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .logo img {
+        height: 50px;
+    }
+
+    .top-bar .container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-section {
+        padding: 40px 0;
+    }
+
+    .welcome-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .staff-section {
+        padding: 40px 0;
+    }
+
+    .staff-image img,
+    .placeholder-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .placeholder-image {
+        font-size: 2.5rem;
+    }
+
+    .quick-links {
+        gap: 10px;
+    }
+
+    .quick-links a {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+}
