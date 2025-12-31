@@ -4,17 +4,17 @@ Generate the static website from Mako templates and text files.
 """
 import subprocess
 import sys
-from pathlib import Path
-from mako.template import Template
+import pathlib
+import mako.template
 
 
-def read_text_file(filepath: Path) -> str:
+def read_text_file(filepath: pathlib.Path) -> str:
     """Read a text file and return its contents."""
     with open(filepath, "r", encoding="utf-8") as f:
         return f.read().strip()
 
 
-def load_staff_member(member_dir: Path) -> dict:
+def load_staff_member(member_dir: pathlib.Path) -> dict:
     """Load staff member data from a directory."""
     return {
         "name": read_text_file(member_dir / "name.txt"),
@@ -36,7 +36,7 @@ def run_precommit() -> bool:
 
 def main():
     """Generate the index.html file from the Mako template."""
-    templates_dir = Path("templates")
+    templates_dir = pathlib.Path("templates")
 
     # Read welcome text
     welcome_text = read_text_file(templates_dir / "welcome.txt")
@@ -58,11 +58,11 @@ def main():
 
     # Load and render the template
     template_path = templates_dir / "index.html.mako"
-    template = Template(filename=str(template_path), input_encoding="utf-8")
+    template = mako.template.Template(filename=str(template_path), input_encoding="utf-8")
     output = template.render(**context)
 
     # Write the output to docs/index.html
-    output_path = Path("docs") / "index.html"
+    output_path = pathlib.Path("docs") / "index.html"
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(output_path, "w", encoding="utf-8") as f:
