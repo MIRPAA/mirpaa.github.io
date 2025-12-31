@@ -1,3 +1,21 @@
+<%def name="staff_member(name, title, image, bio)">
+    <div class="staff-member">
+        <div class="staff-image">
+            % if image.startswith('placeholder:'):
+            <div class="placeholder-image">${image.replace('placeholder:', '')}</div>
+            % else:
+            <img src="${image}" alt="${name}">
+            % endif
+        </div>
+        <div class="staff-info">
+            <h3>${name}</h3>
+            <p class="staff-title">${title}</p>
+            <p class="staff-bio">
+                ${bio}
+            </p>
+        </div>
+    </div>
+</%def>
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -47,75 +65,9 @@
         <div class="container">
             <h2>הצוות המקצועי שלנו</h2>
 
-            <!-- Doctor 1: Orly -->
-            <div class="staff-member">
-                <div class="staff-image">
-                    <img src="images/orly.jpg" alt="ד״ר אורלי">
-                </div>
-                <div class="staff-info">
-                    <h3>ד״ר אורלי</h3>
-                    <p class="staff-title">רופאת ילדים</p>
-                    <p class="staff-bio">
-                        ${doctor_orly_text}
-                    </p>
-                </div>
-            </div>
-
-            <!-- Doctor 2: Dafi -->
-            <div class="staff-member">
-                <div class="staff-image">
-                    <img src="images/dafi.jpg" alt="ד״ר דפי">
-                </div>
-                <div class="staff-info">
-                    <h3>ד״ר דפי</h3>
-                    <p class="staff-title">רופאת ילדים</p>
-                    <p class="staff-bio">
-                        ${doctor_dafi_text}
-                    </p>
-                </div>
-            </div>
-
-            <!-- Nurse -->
-            <div class="staff-member">
-                <div class="staff-image">
-                    <div class="placeholder-image">👩‍⚕️</div>
-                </div>
-                <div class="staff-info">
-                    <h3>שם האחות</h3>
-                    <p class="staff-title">אחות מוסמכת</p>
-                    <p class="staff-bio">
-                        ${nurse_text}
-                    </p>
-                </div>
-            </div>
-
-            <!-- Dietitian -->
-            <div class="staff-member">
-                <div class="staff-image">
-                    <div class="placeholder-image">🥗</div>
-                </div>
-                <div class="staff-info">
-                    <h3>שם הדיאטנית</h3>
-                    <p class="staff-title">דיאטנית קלינית</p>
-                    <p class="staff-bio">
-                        ${dietitian_text}
-                    </p>
-                </div>
-            </div>
-
-            <!-- Psychologist -->
-            <div class="staff-member">
-                <div class="staff-image">
-                    <div class="placeholder-image">🧠</div>
-                </div>
-                <div class="staff-info">
-                    <h3>שם הפסיכולוגית</h3>
-                    <p class="staff-title">פסיכולוגית ילדים ונוער</p>
-                    <p class="staff-bio">
-                        ${psychologist_text}
-                    </p>
-                </div>
-            </div>
+            % for member in staff_members:
+            ${staff_member(member['name'], member['title'], member['image'], member['bio'])}
+            % endfor
         </div>
     </section>
 

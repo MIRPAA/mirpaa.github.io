@@ -6,27 +6,46 @@ from pathlib import Path
 from mako.template import Template
 
 
-def read_text_file(filename: str) -> str:
+def read_text_file(filepath: Path) -> str:
     """Read a text file and return its contents."""
-    filepath = Path("templates") / filename
     with open(filepath, "r", encoding="utf-8") as f:
         return f.read().strip()
 
 
+def load_staff_member(member_dir: Path) -> dict:
+    """Load staff member data from a directory."""
+    return {
+        "name": read_text_file(member_dir / "name.txt"),
+        "title": read_text_file(member_dir / "title.txt"),
+        "image": read_text_file(member_dir / "image.txt"),
+        "bio": read_text_file(member_dir / "bio.txt"),
+    }
+
+
 def main():
     """Generate the index.html file from the Mako template."""
-    # Read all text files
+    templates_dir = Path("templates")
+
+    # Read welcome text
+    welcome_text = read_text_file(templates_dir / "welcome.txt")
+
+    # Load all staff members (in a specific order)
+    staff_order = ["orly", "dafi", "nurse", "dietitian", "psychologist"]
+    staff_members = []
+
+    for member_id in staff_order:
+        member_dir = templates_dir / member_id
+        if member_dir.exists():
+            staff_members.append(load_staff_member(member_dir))
+
+    # Prepare template context
     context = {
-        "welcome_text": read_text_file("welcome.txt"),
-        "doctor_orly_text": read_text_file("doctor-orly.txt"),
-        "doctor_dafi_text": read_text_file("doctor-dafi.txt"),
-        "nurse_text": read_text_file("nurse.txt"),
-        "dietitian_text": read_text_file("dietitian.txt"),
-        "psychologist_text": read_text_file("psychologist.txt"),
+        "welcome_text": welcome_text,
+        "staff_members": staff_members,
     }
 
     # Load and render the template
-    template_path = Path("templates") / "index.html.mako"
+    template_path = templates_dir / "index.html.mako"
     template = Template(filename=str(template_path), input_encoding="utf-8")
     output = template.render(**context)
 
@@ -38,6 +57,7 @@ def main():
         f.write(output)
 
     print(f"✓ Generated {output_path}")
+    print(f"  - Loaded {len(staff_members)} staff members")
 
 
 if __name__ == "__main__":
