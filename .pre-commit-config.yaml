@@ -8,3 +8,12 @@ repos:
     - id: end-of-file-fixer
     - id: check-yaml
       args: ['--unsafe']
+
+- repo: local
+  hooks:
+    - id: validate-html
+      name: Validate HTML
+      entry: .pre-commit-hooks/validate-html.py
+      language: python
+      files: ^docs/index\.html$
+      pass_filenames: true
