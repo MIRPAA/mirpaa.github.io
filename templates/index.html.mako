@@ -52,7 +52,7 @@
         <div class="container">
             <h1>ברוכים הבאים למרפאת הילדים שלנו</h1>
             <div class="welcome-logo">
-                <img src="images/logo.jpg" alt="לוגו מרפאת ילדים">
+                <img src="images/logo.jpg" alt="${generation_timestamp}">
             </div>
             <p class="welcome-text">
                 ${welcome_text}

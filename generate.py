@@ -6,6 +6,7 @@ import subprocess
 import sys
 import pathlib
 import mako.template
+import datetime
 
 
 def read_text_file(filepath: pathlib.Path) -> str:
@@ -51,9 +52,11 @@ def main():
             staff_members.append(load_staff_member(member_dir))
 
     # Prepare template context
+    generation_timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     context = {
         "welcome_text": welcome_text,
         "staff_members": staff_members,
+        "generation_timestamp": generation_timestamp,
     }
 
     # Load and render the template
