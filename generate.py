@@ -1,22 +1,17 @@
 #!/usr/bin/env python3
-"""
-Generate the static website from Mako templates and text files.
-"""
 import subprocess
-import sys
 import pathlib
-import mako.template
 import datetime
+import click
+import mako.template
 
 
 def read_text_file(filepath: pathlib.Path) -> str:
-    """Read a text file and return its contents."""
     with open(filepath, "r", encoding="utf-8") as f:
         return f.read().strip()
 
 
 def load_staff_member(member_dir: pathlib.Path) -> dict:
-    """Load staff member data from a directory."""
     return {
         "name": read_text_file(member_dir / "name.txt"),
         "title": read_text_file(member_dir / "title.txt"),
@@ -26,7 +21,6 @@ def load_staff_member(member_dir: pathlib.Path) -> dict:
 
 
 def run_precommit() -> bool:
-    """Run pre-commit hooks on all files. Returns True if successful."""
     result = subprocess.run(
         ["pre-commit", "run", "--all-files"],
         capture_output=True,
@@ -35,8 +29,8 @@ def run_precommit() -> bool:
     return result.returncode == 0
 
 
+@click.command()
 def main():
-    """Generate the index.html file from the Mako template."""
     templates_dir = pathlib.Path("templates")
 
     # Read welcome text
@@ -71,22 +65,22 @@ def main():
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(output)
 
-    print(f"✓ Generated {output_path}")
-    print(f"  - Loaded {len(staff_members)} staff members")
+    click.secho(f"✓ Generated {output_path}", fg="green")
+    click.secho(f"  - Loaded {len(staff_members)} staff members", fg="green")
 
     # Run pre-commit hooks up to 3 times
-    print("\nRunning pre-commit hooks...")
+    click.echo("\nRunning pre-commit hooks...")
     max_attempts = 3
     for attempt in range(1, max_attempts + 1):
-        print(f"  Attempt {attempt}/{max_attempts}...")
+        click.echo(f"  Attempt {attempt}/{max_attempts}...")
         if run_precommit():
-            print("✓ Pre-commit hooks passed")
+            click.secho("✓ Pre-commit hooks passed", fg="green")
             break
         elif attempt < max_attempts:
-            print(f"  ⚠ Pre-commit modified files, retrying...")
+            click.secho(f"  ⚠ Pre-commit modified files, retrying...", fg="yellow")
         else:
-            print("✗ Pre-commit hooks failed after 3 attempts")
-            sys.exit(1)
+            click.secho("✗ Pre-commit hooks failed after 3 attempts", fg="red")
+            raise click.Abort()
 
 
 if __name__ == "__main__":
