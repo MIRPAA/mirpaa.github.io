@@ -1,0 +1,21 @@
+name: BasicSetup
+description: basic setup
+inputs:
+  python_version:
+    description: 'Python version'
+    type: string
+    required: false
+    default: '3.13'
+
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python ${{inputs.python_version}}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{inputs.python_version}}
+    - uses: astral-sh/setup-uv@v6
+    - name: Install Project
+      run: uv sync
+      shell: bash
