@@ -29,14 +29,7 @@ def run_precommit() -> bool:
     return result.returncode == 0
 
 
-@click.command()
-def main():
-    templates_dir = pathlib.Path("templates")
-
-    # Read welcome text
-    welcome_text = read_text_file(templates_dir / "welcome.txt")
-
-    # Load all staff members (in a specific order)
+def load_staff_members(templates_dir: pathlib.Path) -> list[dict]:
     staff_order = ["orly", "dafi", "nurse", "dietitian", "psychologist"]
     staff_members = []
 
@@ -45,32 +38,35 @@ def main():
         if member_dir.exists():
             staff_members.append(load_staff_member(member_dir))
 
-    # Prepare template context
+    return staff_members
+
+
+def prepare_template_context(welcome_text: str, staff_members: list[dict]) -> dict:
     generation_timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    context = {
+    return {
         "welcome_text": welcome_text,
         "staff_members": staff_members,
         "generation_timestamp": generation_timestamp,
     }
 
-    # Load and render the template
+
+def render_template(templates_dir: pathlib.Path, context: dict) -> str:
     template_path = templates_dir / "index.html.mako"
     template = mako.template.Template(filename=str(template_path), input_encoding="utf-8")
-    output = template.render(**context)
+    return template.render(**context)
 
-    # Write the output to docs/index.html
+
+def write_output(output: str) -> pathlib.Path:
     output_path = pathlib.Path("docs") / "index.html"
-    output_path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(output)
 
-    click.secho(f"✓ Generated {output_path}", fg="green")
-    click.secho(f"  - Loaded {len(staff_members)} staff members", fg="green")
+    return output_path
 
-    # Run pre-commit hooks up to 3 times
+
+def run_precommit_with_retries(max_attempts: int = 3):
     click.echo("\nRunning pre-commit hooks...")
-    max_attempts = 3
     for attempt in range(1, max_attempts + 1):
         click.echo(f"  Attempt {attempt}/{max_attempts}...")
         if run_precommit():
@@ -81,6 +77,22 @@ def main():
         else:
             click.secho("✗ Pre-commit hooks failed after 3 attempts", fg="red")
             raise click.Abort()
+
+
+@click.command()
+def main():
+    templates_dir = pathlib.Path("templates")
+
+    welcome_text = read_text_file(templates_dir / "welcome.txt")
+    staff_members = load_staff_members(templates_dir)
+    context = prepare_template_context(welcome_text, staff_members)
+    output = render_template(templates_dir, context)
+    output_path = write_output(output)
+
+    click.secho(f"✓ Generated {output_path}", fg="green")
+    click.secho(f"  - Loaded {len(staff_members)} staff members", fg="green")
+
+    run_precommit_with_retries()
 
 
 if __name__ == "__main__":
