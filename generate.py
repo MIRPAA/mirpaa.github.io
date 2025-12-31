@@ -2,6 +2,8 @@
 """
 Generate the static website from Mako templates and text files.
 """
+import subprocess
+import sys
 from pathlib import Path
 from mako.template import Template
 
@@ -20,6 +22,16 @@ def load_staff_member(member_dir: Path) -> dict:
         "image": read_text_file(member_dir / "image.txt"),
         "bio": read_text_file(member_dir / "bio.txt"),
     }
+
+
+def run_precommit() -> bool:
+    """Run pre-commit hooks on all files. Returns True if successful."""
+    result = subprocess.run(
+        ["pre-commit", "run", "--all-files"],
+        capture_output=True,
+        text=True,
+    )
+    return result.returncode == 0
 
 
 def main():
@@ -58,6 +70,20 @@ def main():
 
     print(f"✓ Generated {output_path}")
     print(f"  - Loaded {len(staff_members)} staff members")
+
+    # Run pre-commit hooks up to 3 times
+    print("\nRunning pre-commit hooks...")
+    max_attempts = 3
+    for attempt in range(1, max_attempts + 1):
+        print(f"  Attempt {attempt}/{max_attempts}...")
+        if run_precommit():
+            print("✓ Pre-commit hooks passed")
+            break
+        elif attempt < max_attempts:
+            print(f"  ⚠ Pre-commit modified files, retrying...")
+        else:
+            print("✗ Pre-commit hooks failed after 3 attempts")
+            sys.exit(1)
 
 
 if __name__ == "__main__":
