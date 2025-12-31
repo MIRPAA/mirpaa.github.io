@@ -9,11 +9,10 @@ repos:
     - id: check-yaml
       args: ['--unsafe']
 
-- repo: local
+# HTML formatting and validation with Prettier
+- repo: https://github.com/pre-commit/mirrors-prettier
+  rev: v4.0.0-alpha.8
   hooks:
-    - id: validate-html
-      name: Validate HTML
-      entry: .pre-commit-hooks/validate-html.py
-      language: python
+    - id: prettier
+      types_or: [html]
       files: ^docs/index\.html$
-      pass_filenames: true
