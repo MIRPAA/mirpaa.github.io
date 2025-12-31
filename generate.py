@@ -30,13 +30,11 @@ def run_precommit() -> bool:
 
 
 def load_staff_members(templates_dir: pathlib.Path) -> list[dict]:
-    staff_order = ["orly", "dafi", "nurse", "dietitian", "psychologist"]
     staff_members = []
+    member_dirs = sorted([d for d in templates_dir.iterdir() if d.is_dir()])
 
-    for member_id in staff_order:
-        member_dir = templates_dir / member_id
-        if member_dir.exists():
-            staff_members.append(load_staff_member(member_dir))
+    for member_dir in member_dirs:
+        staff_members.append(load_staff_member(member_dir))
 
     return staff_members
 
