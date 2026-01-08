@@ -10,4 +10,8 @@ generate like so
 
     $ uv run python generate.py
 
+or just
+
+    $ make
+
 commit, push, merge!
