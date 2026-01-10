@@ -1,2714 +1,2527 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>מרפאת הילדים בדובדבן קריית אונו - בית למומחים ברפואת ילדים</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Varela+Round&family=Suez+One&family=Raashan&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Varela+Round&family=Suez+One&family=Raashan&display=swap" rel="stylesheet">
     <style>
-      :root {
-        --primary: #ff9a8b;
-        --primary-dark: #ff6b9d;
-        --secondary: #ffeaa7;
-        --accent: #a29bfe;
-        --cream: #fff8f0;
-        --peach: #ffe5e0;
-        --mint: #d4f1e8;
-        --lavender: #e6e6fa;
-        --text-dark: #2d3436;
-        --text-light: #636e72;
-        --white: #ffffff;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Heebo", sans-serif;
-        color: var(--text-dark);
-        background: var(--cream);
-        overflow-x: hidden;
-      }
-
-      /* Magical floating elements */
-      .floating-shapes {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        z-index: 0;
-        overflow: hidden;
-      }
-
-      .shape {
-        position: absolute;
-        opacity: 0.15;
-        animation: float 20s infinite ease-in-out;
-      }
-
-      .shape-1 {
-        width: 120px;
-        height: 120px;
-        background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-        top: 10%;
-        right: 10%;
-        animation-delay: 0s;
-      }
-
-      .shape-2 {
-        width: 180px;
-        height: 180px;
-        background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-        bottom: 20%;
-        left: 5%;
-        animation-delay: -5s;
-      }
-
-      .shape-3 {
-        width: 90px;
-        height: 90px;
-        background: radial-gradient(
-          circle,
-          var(--secondary) 0%,
-          transparent 70%
-        );
-        top: 60%;
-        right: 20%;
-        animation-delay: -10s;
-      }
-
-      .shape-4 {
-        width: 150px;
-        height: 150px;
-        background: radial-gradient(circle, var(--mint) 0%, transparent 70%);
-        top: 30%;
-        left: 15%;
-        animation-delay: -15s;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translate(0, 0) scale(1);
-        }
-        25% {
-          transform: translate(20px, -30px) scale(1.1);
-        }
-        50% {
-          transform: translate(-15px, 20px) scale(0.9);
-        }
-        75% {
-          transform: translate(30px, 10px) scale(1.05);
-        }
-      }
-
-      /* Header */
-      header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        padding: 1.2rem 5%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 1000;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease;
-      }
-
-      header.scrolled {
-        padding: 0.8rem 5%;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .header-left {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-      }
-
-      .logo {
-        font-family: "Varela Round", sans-serif;
-        font-size: 1.8rem;
-        font-weight: 700;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: fadeInDown 0.8s ease-out;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-      }
-
-      .logo-img {
-        width: 65px;
-        height: 65px;
-        border-radius: 50%;
-        box-shadow: 0 4px 15px rgba(255, 154, 139, 0.2);
-        transition: all 0.3s ease;
-      }
-
-      .logo:hover .logo-img {
-        transform: scale(1.1) rotate(5deg);
-        box-shadow: 0 6px 20px rgba(255, 154, 139, 0.3);
-      }
-
-      /* Header Address */
-      .header-address {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        background: rgba(255, 118, 153, 0.08);
-        border-radius: 20px;
-        animation: fadeInDown 0.8s ease-out 0.2s backwards;
-      }
-
-      .address-icon {
-        color: var(--primary);
-        flex-shrink: 0;
-      }
-
-      .address-text {
-        font-size: 0.95rem;
-        color: var(--text-dark);
-        font-weight: 500;
-        white-space: nowrap;
-      }
-
-      /* Navigation */
-      nav {
-        display: flex;
-        gap: 2.5rem;
-        align-items: center;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 2.5rem;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      .nav-links a {
-        text-decoration: none;
-        color: var(--text-dark);
-        font-weight: 600;
-        font-size: 1rem;
-        position: relative;
-        transition: all 0.3s ease;
-      }
-
-      .nav-links a::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 3px;
-        background: linear-gradient(
-          90deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
-        border-radius: 2px;
-        transition: width 0.3s ease;
-      }
-
-      .nav-links a:hover {
-        color: var(--primary);
-      }
-
-      .nav-links a:hover::after {
-        width: 100%;
-      }
-
-      .contact-button {
-        padding: 0.8rem 1.8rem;
-        background: var(--white);
-        color: #ff7699;
-        border: 2px solid #ff7699;
-        border-radius: 50px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        cursor: pointer;
-        box-shadow: 0 6px 20px rgba(255, 118, 153, 0.2);
-        transition: all 0.3s ease;
-        animation: fadeInDown 0.8s ease-out 0.2s backwards;
-        text-decoration: none;
-        display: inline-block;
-      }
-
-      .contact-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(255, 118, 153, 0.3);
-        background: #ff7699;
-        color: var(--white);
-      }
-
-      /* Mobile menu button */
-      .menu-toggle {
-        display: none;
-        flex-direction: column;
-        gap: 5px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0.5rem;
-      }
-
-      .menu-toggle span {
-        width: 28px;
-        height: 3px;
-        background: var(--text-dark);
-        border-radius: 3px;
-        transition: all 0.3s ease;
-      }
-
-      .menu-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(8px, 8px);
-      }
-
-      .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -7px);
-      }
-
-      /* Hero Section */
-      .hero {
-        position: relative;
-        padding: 10rem 5% 6rem;
-        text-align: center;
-        z-index: 1;
-        background-image: url("clinic-background.jpg");
-        background-size: cover;
-        background-position: 40% center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: none;
-        z-index: -1;
-      }
-
-      .hero-content {
-        max-width: 900px;
-        margin: 0 auto;
-        margin-right: 5%;
-        text-align: right;
-      }
-
-      .hero-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
-        color: var(--white);
-        padding: 0.6rem 1.5rem;
-        border-radius: 50px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        margin-bottom: 2rem;
-        box-shadow: 0 4px 15px rgba(255, 154, 139, 0.3);
-        animation: fadeInDown 0.8s ease-out backwards;
-      }
-
-      .badge-icon {
-        font-size: 1.2rem;
-      }
-
-      .hero-title {
-        font-family: "Raashan", system-ui;
-        font-size: 5.5rem;
-        font-weight: 400;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
-        animation: fadeInUp 0.8s ease-out 0.2s backwards;
-      }
-
-      .title-main {
-        display: block;
-        color: #000000;
-        font-size: 5.5rem;
-      }
-
-      .title-accent {
-        display: block;
-        color: #000000;
-        font-size: 3.5rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1.6rem;
-        color: #ff7699;
-        margin-bottom: 2rem;
-        font-weight: 600;
-        animation: fadeInUp 0.8s ease-out 0.4s backwards;
-        letter-spacing: 0.5px;
-      }
-
-      .hero-description {
-        font-size: 1.1rem;
-        font-family: "Varela Round", sans-serif;
-        color: var(--text-dark);
-        max-width: 700px;
-        margin: 0 0 3rem 0;
-        line-height: 1.7;
-        animation: fadeInUp 0.8s ease-out 0.6s backwards;
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        padding: 1.3rem 1.7rem;
-        border-radius: 20px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        border: 1px solid rgba(255, 255, 255, 0.4);
-      }
-
-      /* Hero Contact Logos */
-      .hero-contact-logos {
-        display: flex;
-        justify-content: flex-start;
-        gap: 1.5rem;
-        margin-top: 2.5rem;
-        animation: fadeInUp 0.8s ease-out 0.6s backwards;
-      }
-
-      .contact-logo-link {
-        display: inline-block;
-        transition: all 0.3s ease;
-      }
-
-      .contact-logo {
-        width: 50px;
-        height: 50px;
-        object-fit: contain;
-        transition: all 0.3s ease;
-      }
-
-      .contact-logo-link:hover .contact-logo {
-        transform: scale(1.15);
-        filter: brightness(1.1);
-      }
-
-      .hero-features {
-        display: flex;
-        justify-content: center;
-        gap: 3rem;
-        flex-wrap: wrap;
-        animation: fadeInUp 0.8s ease-out 0.8s backwards;
-      }
-
-      .hero-feature {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .feature-icon {
-        font-size: 2.5rem;
-        background: var(--white);
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 5px 20px rgba(255, 154, 139, 0.2);
-        transition: all 0.3s ease;
-      }
-
-      .hero-feature:hover .feature-icon {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(255, 154, 139, 0.3);
-      }
-
-      .feature-text {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--text-dark);
-      }
-
-      /* Decorative heart */
-      .heart-decoration {
-        display: inline-block;
-        font-size: 2rem;
-        color: var(--primary);
-        margin: 0 0.5rem;
-        animation: heartbeat 2s infinite ease-in-out;
-      }
-
-      @keyframes heartbeat {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        15% {
-          transform: scale(1.2);
-        }
-        30% {
-          transform: scale(1);
-        }
-      }
-
-      /* Info Cards */
-      .info-section {
-        position: relative;
-        padding: 2rem 5% 4rem;
-        z-index: 1;
-      }
-
-      .quick-contact {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-bottom: 4rem;
-        flex-wrap: wrap;
-      }
-
-      .quick-contact-btn {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        padding: 1.2rem 2.5rem;
-        border-radius: 50px;
-        font-size: 1.2rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        animation: fadeInUp 0.8s ease-out 0.5s backwards;
-      }
-
-      .whatsapp-btn {
-        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-        color: var(--white);
-      }
-
-      .whatsapp-btn:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
-      }
-
-      .email-btn {
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
-        color: var(--white);
-        animation-delay: 0.6s;
-      }
-
-      .email-btn:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 35px rgba(255, 154, 139, 0.4);
-      }
-
-      .btn-icon {
-        font-size: 1.5rem;
-        display: flex;
-        align-items: center;
-      }
-
-      .btn-text {
-        font-family: "Heebo", sans-serif;
-      }
-
-      .cards-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2.5rem;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .card {
-        background: var(--white);
-        border-radius: 30px;
-        padding: 2.5rem;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        animation: fadeInUp 0.8s ease-out backwards;
-      }
-
-      .card:nth-child(1) {
-        animation-delay: 0.8s;
-      }
-      .card:nth-child(2) {
-        animation-delay: 1s;
-      }
-      .card:nth-child(3) {
-        animation-delay: 1.2s;
-      }
-
-      .card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 100px;
-        height: 100px;
-        background: linear-gradient(135deg, var(--peach) 0%, transparent 100%);
-        border-radius: 0 0 0 100%;
-        opacity: 0.5;
-        transition: all 0.4s ease;
-      }
-
-      .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-      }
-
-      .card:hover::before {
-        width: 150px;
-        height: 150px;
-      }
-
-      .card-icon {
-        font-size: 3rem;
-        margin-bottom: 1.5rem;
-        display: inline-block;
-        animation: bounce 2s infinite ease-in-out;
-      }
-
-      .card:nth-child(1) .card-icon {
-        animation-delay: 0s;
-      }
-      .card:nth-child(2) .card-icon {
-        animation-delay: 0.3s;
-      }
-      .card:nth-child(3) .card-icon {
-        animation-delay: 0.6s;
-      }
-
-      @keyframes bounce {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      .card h3 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-        color: var(--text-dark);
-        font-weight: 700;
-      }
-
-      .card p {
-        font-size: 1.1rem;
-        line-height: 1.7;
-        color: var(--text-light);
-      }
-
-      /* Doctors Section */
-      .doctors-section {
-        position: relative;
-        padding: 6rem 5%;
-        background: var(--cream);
-        z-index: 1;
-      }
-
-      /* Opening Hours Section */
-      .hours-section {
-        position: relative;
-        padding: 6rem 5%;
-        background: var(--cream);
-        z-index: 1;
-      }
-
-      .hours-container {
-        max-width: 700px;
-        margin: 0 auto;
-      }
-
-      .hours-card {
-        background: var(--white);
-        border-radius: 35px;
-        padding: 3rem;
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-        text-align: center;
-      }
-
-      .hours-icon {
-        font-size: 4rem;
-        margin-bottom: 2rem;
-        animation: pulse 2s infinite ease-in-out;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.1);
-        }
-      }
-
-      .hours-content {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .day-hours {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.2rem 2rem;
-        background: var(--peach);
-        border-radius: 20px;
-        transition: all 0.3s ease;
-      }
-
-      .day-hours:hover {
-        transform: translateX(-5px);
-        box-shadow: 0 5px 20px rgba(255, 154, 139, 0.2);
-      }
-
-      .day-hours.closed {
-        background: #f5f5f5;
-        opacity: 0.6;
-      }
-
-      .day {
-        font-size: 1.3rem;
-        font-weight: 700;
-        color: var(--text-dark);
-      }
-
-      .time {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: var(--text-light);
-      }
-
-      .day-hours.closed .time {
-        color: #999;
-      }
-
-      .section-title {
-        text-align: center;
-        font-size: 3rem;
-        font-weight: 800;
-        margin-bottom: 3rem;
-        color: var(--text-dark);
-        font-family: "Varela Round", sans-serif;
-      }
-
-      .doctors-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 3rem;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .doctor-card {
-        background: var(--white);
-        border-radius: 30px;
-        padding: 2.5rem;
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s ease;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .doctor-card::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 6px;
-        background: linear-gradient(
-          90deg,
-          var(--primary) 0%,
-          var(--accent) 100%
-        );
-        transition: height 0.4s ease;
-      }
-
-      .doctor-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 65px rgba(0, 0, 0, 0.15);
-      }
-
-      .doctor-card:hover::after {
-        height: 10px;
-      }
-
-      /* Join Us Card */
-      .join-us-card {
-        background: linear-gradient(
-          135deg,
-          var(--accent) 0%,
-          var(--primary) 100%
-        );
-        color: var(--white);
-        border: none;
-      }
-
-      .join-us-card::after {
-        background: linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.3) 0%,
-          rgba(255, 255, 255, 0.1) 100%
-        );
-      }
-
-      .join-us-card:hover {
-        transform: translateY(-10px) scale(1.02);
-      }
-
-      .join-us-card .doctor-name,
-      .join-us-card .doctor-title,
-      .join-us-card .doctor-bio {
-        color: var(--white);
-      }
-
-      .join-icon-wrapper {
-        margin-bottom: 1.5rem;
-      }
-
-      .join-icon {
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 5.5rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-      }
-
-      .join-us-card:hover .join-icon {
-        transform: scale(1.1) rotate(10deg);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-      }
-
-      .join-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.8rem;
-        background: var(--white);
-        color: var(--primary);
-        padding: 1rem 2rem;
-        border-radius: 50px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        text-decoration: none;
-        margin-top: 1.5rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      }
-
-      .join-btn:hover {
-        transform: translateX(-5px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-        background: var(--cream);
-      }
-
-      .join-arrow {
-        font-size: 1.4rem;
-        transition: transform 0.3s ease;
-      }
-
-      .join-btn:hover .join-arrow {
-        transform: translateX(5px);
-      }
-
-      .doctor-image-wrapper {
-        margin-bottom: 1.5rem;
-      }
-
-      .doctor-image {
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 5rem;
-        color: var(--white);
-        box-shadow: 0 10px 30px rgba(255, 154, 139, 0.3);
-        transition: all 0.3s ease;
-      }
-
-      .doctor-photo {
-        width: 180px;
-        height: 180px;
-        border-radius: 15px;
-        object-fit: cover;
-        box-shadow: 0 10px 30px rgba(255, 154, 139, 0.3);
-        transition: all 0.3s ease;
-      }
-
-      .doctor-photo-circle {
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        object-fit: cover;
-        box-shadow: 0 10px 30px rgba(255, 154, 139, 0.3);
-        transition: all 0.3s ease;
-      }
-
-      .doctor-card:hover .doctor-photo {
-        transform: scale(1.05);
-        box-shadow: 0 15px 40px rgba(255, 154, 139, 0.4);
-      }
-
-      .doctor-card:hover .doctor-photo-circle {
-        transform: scale(1.05);
-        box-shadow: 0 15px 40px rgba(255, 154, 139, 0.4);
-      }
-
-      .doctor-card:hover .doctor-image {
-        transform: scale(1.05);
-        box-shadow: 0 15px 40px rgba(255, 154, 139, 0.4);
-      }
-
-      .doctor-name {
-        font-size: 1.6rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        color: var(--text-dark);
-      }
-
-      .doctor-title {
-        font-size: 1.1rem;
-        color: var(--primary-dark);
-        font-weight: 600;
-        margin-bottom: 1.2rem;
-      }
-
-      .doctor-bio {
-        font-size: 1rem;
-        line-height: 1.7;
-        color: var(--text-light);
-        text-align: center;
-      }
-
-      /* Services Section */
-      .services-section {
-        position: relative;
-        padding: 6rem 5%;
-        z-index: 1;
-      }
-
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 3rem auto 0;
-      }
-
-      .service-item {
-        background: var(--white);
-        padding: 2rem;
-        border-radius: 25px;
-        text-align: center;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-        border: 3px solid transparent;
-      }
-
-      .service-item:hover {
-        border-color: var(--primary);
-        transform: scale(1.05);
-        box-shadow: 0 12px 40px rgba(255, 154, 139, 0.2);
-      }
-
-      .service-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-      }
-
-      .service-name {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: var(--text-dark);
-      }
-
-      /* Gallery Section */
-      .gallery-section {
-        position: relative;
-        padding: 72px 5%;
-        background: #fafafa;
-        overflow: hidden;
-      }
-
-      .gallery-container {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      /* Gallery Header */
-      .gallery-header {
-        text-align: center;
-        margin-bottom: 48px;
-      }
-
-      .gallery-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #2d3436;
-        margin-bottom: 12px;
-        font-family: "Varela Round", sans-serif;
-      }
-
-      .gallery-subtitle {
-        font-size: 1.1rem;
-        color: #636e72;
-        max-width: 600px;
-        margin: 0 auto;
-        line-height: 1.6;
-      }
-
-      /* Masonry Grid */
-      .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        grid-auto-rows: 240px;
-      }
-
-      .gallery-item {
-        position: relative;
-        overflow: hidden;
-        border-radius: 16px;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        transition: all 0.25s ease;
-      }
-
-      .gallery-item-large {
-        grid-column: span 2;
-        grid-row: span 2;
-      }
-
-      .gallery-item-tall {
-        grid-row: span 2;
-      }
-
-      .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.25s ease;
-      }
-
-      .gallery-item:hover {
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        transform: translateY(-2px);
-      }
-
-      .gallery-item:hover img {
-        transform: scale(1.05);
-      }
-
-      /* Gallery Overlay */
-      .gallery-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.6);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: opacity 0.25s ease;
-      }
-
-      .gallery-item:hover .gallery-overlay {
-        opacity: 1;
-      }
-
-      .gallery-view-btn {
-        background: white;
-        color: #2d3436;
-        border: none;
-        padding: 12px 24px;
-        border-radius: 24px;
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: all 0.2s ease;
-        font-family: "Heebo", sans-serif;
-      }
-
-      .gallery-view-btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      }
-
-      .gallery-view-btn svg {
-        width: 20px;
-        height: 20px;
-      }
-
-      /* Lightbox */
-      .lightbox {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.95);
-        z-index: 9999;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .lightbox.active {
-        display: flex;
-        opacity: 1;
-      }
-
-      .lightbox-content {
-        position: relative;
-        max-width: 90vw;
-        max-height: 90vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-      }
-
-      #lightbox-image {
-        max-width: 100%;
-        max-height: 85vh;
-        border-radius: 8px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-      }
-
-      .lightbox-caption {
-        color: white;
-        font-size: 1.1rem;
-        text-align: center;
-        padding: 8px 16px;
-      }
-
-      /* Lightbox Controls */
-      .lightbox-close,
-      .lightbox-prev,
-      .lightbox-next {
-        position: fixed;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: white;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.2s ease;
-        z-index: 10000;
-      }
-
-      .lightbox-close {
-        top: 24px;
-        right: 24px;
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-      }
-
-      .lightbox-prev,
-      .lightbox-next {
-        top: 50%;
-        transform: translateY(-50%);
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-      }
-
-      .lightbox-prev {
-        left: 24px;
-      }
-
-      .lightbox-next {
-        right: 24px;
-      }
-
-      .lightbox-close:hover,
-      .lightbox-prev:hover,
-      .lightbox-next:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-50%) scale(1.1);
-      }
-
-      .lightbox-close:hover {
-        transform: scale(1.1);
-      }
-
-      .lightbox-close:focus,
-      .lightbox-prev:focus,
-      .lightbox-next:focus {
-        outline: 2px solid white;
-        outline-offset: 2px;
-      }
-
-      /* Contact Section */
-      .contact-section {
-        position: relative;
-        padding: 6rem 5%;
-        background: #e6eaec;
-        z-index: 1;
-      }
-
-      .contact-content {
-        max-width: 1000px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2.5rem;
-      }
-
-      .contact-grid-row {
-        max-width: 1400px;
-        margin: 0 auto 2.5rem;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2.5rem;
-      }
-
-      .contact-single-row {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        margin-bottom: 0;
-      }
-
-      .contact-info {
-        background: var(--white);
-        padding: 2.5rem;
-        border-radius: 30px;
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-      }
-
-      .contact-compact {
-        padding: 2rem;
-      }
-
-      .contact-compact h3 {
-        font-size: 1.4rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .contact-compact .info-item {
-        margin-bottom: 1rem;
-      }
-
-      .contact-compact .day-hours {
-        padding: 0.7rem 1.2rem;
-      }
-
-      .contact-compact .map-embed {
-        height: 220px;
-      }
-
-      .maccabi-appointment {
-        margin-top: 1.5rem;
-        padding-top: 1.5rem;
-        border-top: 2px solid var(--peach);
-        text-align: center;
-      }
-
-      .appointment-text {
-        font-size: 0.9rem;
-        color: var(--text-dark);
-        line-height: 1.6;
-        margin-bottom: 1rem;
-      }
-
-      .appointment-text strong {
-        color: var(--primary);
-        font-size: 1rem;
-      }
-
-      .maccabi-logo {
-        height: 40px;
-      }
-
-      .contact-form-card {
-        background: var(--white);
-        padding: 2.5rem;
-        border-radius: 30px;
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-      }
-
-      .contact-form-card h3 {
-        font-size: 1.6rem;
-        color: var(--text-dark);
-        margin-bottom: 1.5rem;
-        font-weight: 700;
-      }
-
-      .map-info {
-        padding: 2.5rem;
-      }
-
-      .address-nav-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1.5rem;
-        margin-top: 1rem;
-      }
-
-      .map-address {
-        font-size: 1.1rem;
-        color: var(--text-light);
-        margin: 0;
-        font-weight: 500;
-        flex: 1;
-      }
-
-      .navigation-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
-        color: var(--white);
-        padding: 0.7rem 1.5rem;
-        border-radius: 50px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
-        white-space: nowrap;
-      }
-
-      .navigation-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(66, 133, 244, 0.4);
-      }
-
-      .nav-icon {
-        font-size: 1.1rem;
-      }
-
-      .map-info .map-embed {
-        width: 100%;
-        height: 280px;
-        border-radius: 15px;
-        overflow: hidden;
-        margin-top: 1.5rem;
-      }
-
-      .map-embed {
-        width: 100%;
-        height: 250px;
-        border-radius: 15px;
-        overflow: hidden;
-      }
-
-      .contact-info h3 {
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
-        color: var(--text-dark);
-        font-weight: 700;
-      }
-
-      .hours-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .day-hours {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 1.5rem;
-        background: var(--peach);
-        border-radius: 15px;
-        transition: all 0.3s ease;
-      }
-
-      .day-hours:hover {
-        transform: translateX(-5px);
-        box-shadow: 0 5px 15px rgba(255, 154, 139, 0.2);
-      }
-
-      .day-hours.closed {
-        background: #f5f5f5;
-        opacity: 0.6;
-      }
-
-      .day {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: var(--text-dark);
-      }
-
-      .time {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--text-light);
-      }
-
-      .day-hours.closed .time {
-        color: #999;
-      }
-
-      .info-item {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 1.5rem;
-        gap: 1rem;
-      }
-
-      .info-icon {
-        font-size: 1.8rem;
-        flex-shrink: 0;
-      }
-
-      .info-text {
-        font-size: 1.1rem;
-        line-height: 1.7;
-        color: var(--text-light);
-      }
-
-      .info-text strong {
-        display: block;
-        color: var(--text-dark);
-        font-weight: 600;
-        margin-bottom: 0.3rem;
-      }
-
-      /* WhatsApp Contact */
-      .whatsapp-contact-item {
-        margin-bottom: 1.5rem;
-      }
-
-      .whatsapp-link-contact {
-        display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-        text-decoration: none;
-        color: inherit;
-        transition: all 0.3s ease;
-        padding: 0.5rem;
-        margin: -0.5rem;
-        border-radius: 10px;
-      }
-
-      .whatsapp-link-contact:hover {
-        background: rgba(37, 211, 102, 0.1);
-      }
-
-      .whatsapp-icon-contact {
-        width: 28px;
-        height: 28px;
-        color: #25d366;
-        flex-shrink: 0;
-        transition: all 0.3s ease;
-      }
-
-      .whatsapp-link-contact:hover .whatsapp-icon-contact {
-        transform: scale(1.1);
-      }
-
-      .whatsapp-number {
-        display: block;
-        font-size: 1.1rem;
-        color: var(--text-light);
-        direction: ltr;
-        text-align: right;
-      }
-
-      .whatsapp-note {
-        display: block;
-        font-size: 0.85rem;
-        color: #25d366;
-        margin-top: 0.3rem;
-        font-style: italic;
-      }
-
-      .maccabi-appointment {
-        margin-top: 2rem;
-        padding-top: 2rem;
-        border-top: 2px solid var(--peach);
-        text-align: center;
-      }
-
-      .appointment-text {
-        font-size: 1rem;
-        color: var(--text-dark);
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-      }
-
-      .appointment-text strong {
-        color: var(--primary);
-        font-size: 1.2rem;
-      }
-
-      .maccabi-logo-link {
-        display: inline-block;
-        transition: all 0.3s ease;
-      }
-
-      .maccabi-logo {
-        height: 50px;
-        width: auto;
-        transition: all 0.3s ease;
-      }
-
-      .maccabi-logo-link:hover {
-        transform: translateY(-3px);
-      }
-
-      .maccabi-logo-link:hover .maccabi-logo {
-        filter: brightness(1.1);
-      }
-
-      /* Contact Form */
-      .appointment-info {
-        background: var(--white);
-        padding: 2rem;
-        border-radius: 25px;
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-      }
-
-      .appointment-content {
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
-      }
-
-      .appointment-method {
-        display: flex;
-        gap: 1rem;
-        align-items: flex-start;
-      }
-
-      .method-icon {
-        font-size: 1.8rem;
-        flex-shrink: 0;
-        width: 45px;
-        height: 45px;
-        background: linear-gradient(
-          135deg,
-          var(--mint) 0%,
-          var(--secondary) 100%
-        );
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 5px 20px rgba(162, 155, 254, 0.2);
-      }
-
-      .appointment-method.urgent .method-icon {
-        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-      }
-
-      .method-text {
-        flex: 1;
-      }
-
-      .method-text h4 {
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--text-dark);
-        margin-bottom: 0.5rem;
-      }
-
-      .method-text p {
-        font-size: 0.85rem;
-        line-height: 1.5;
-        color: var(--text-light);
-        margin-bottom: 0.7rem;
-      }
-
-      .appointment-divider {
-        height: 2px;
-        background: linear-gradient(
-          90deg,
-          transparent 0%,
-          var(--peach) 50%,
-          transparent 100%
-        );
-        margin: 0.2rem 0;
-      }
-
-      /* Contact Form */
-      .contact-form-container {
-        max-width: 800px;
-        margin: 4rem auto 0;
-        background: var(--white);
-        padding: 3rem;
-        border-radius: 30px;
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-      }
-
-      .form-title {
-        font-size: 1.8rem;
-        color: var(--text-dark);
-        text-align: center;
-        margin-bottom: 2rem;
-        font-weight: 700;
-      }
-
-      .contact-form {
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
-      }
-
-      .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
-      }
-
-      .form-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .form-group label {
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: var(--text-dark);
-      }
-
-      .form-group input,
-      .form-group textarea {
-        padding: 0.9rem;
-        border: 2px solid #e0e0e0;
-        border-radius: 12px;
-        font-size: 0.95rem;
-        font-family: "Heebo", sans-serif;
-        transition: all 0.3s ease;
-        background: var(--white);
-      }
-
-      .form-group input:focus,
-      .form-group textarea:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(255, 154, 139, 0.1);
-      }
-
-      .form-group textarea {
-        resize: vertical;
-        min-height: 100px;
-      }
-
-      .submit-btn {
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
-        color: var(--white);
-        border: none;
-        padding: 1rem 2rem;
-        border-radius: 50px;
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.7rem;
-        margin: 0.5rem 0 0 0;
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 25px rgba(255, 154, 139, 0.3);
-        width: 100%;
-      }
-
-      .submit-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 35px rgba(255, 154, 139, 0.4);
-      }
-
-      .btn-icon {
-        font-size: 1.2rem;
-      }
-
-      .whatsapp-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.6rem;
-        padding: 0.7rem 1.3rem;
-        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-        color: var(--white);
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
-        margin-top: 0.2rem;
-      }
-
-      .whatsapp-link:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-      }
-
-      .whatsapp-link .arrow {
-        font-size: 1.2rem;
-        transition: transform 0.3s ease;
-      }
-
-      .whatsapp-link:hover .arrow {
-        transform: translateX(-5px);
-      }
-
-      /* Map Section */
-      .map-section {
-        position: relative;
-        padding: 4rem 5%;
-        z-index: 1;
-      }
-
-      .map-container {
-        max-width: 1000px;
-        margin: 0 auto;
-        background: var(--white);
-        padding: 2rem;
-        border-radius: 30px;
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-      }
-
-      .map-container h3 {
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-        text-align: center;
-        color: var(--text-dark);
-        font-weight: 700;
-      }
-
-      .map-embed {
-        width: 100%;
-        height: 400px;
-        border-radius: 20px;
-        border: none;
-      }
-
-      /* Footer */
-      footer {
-        position: relative;
-        padding: 3rem 5%;
-        text-align: center;
-        background: var(--text-dark);
-        color: var(--white);
-        z-index: 1;
-      }
-
-      footer p {
-        font-size: 1rem;
-        opacity: 0.8;
-      }
-
-      /* Animations */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes fadeInDown {
-        from {
-          opacity: 0;
-          transform: translateY(-30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Responsive */
-      /* Tablet breakpoint */
-      @media (max-width: 1024px) {
-        .header-address {
-          display: none;
+        :root {
+            --primary: #FF9A8B;
+            --primary-dark: #FF6B9D;
+            --secondary: #FFEAA7;
+            --accent: #A29BFE;
+            --cream: #FFF8F0;
+            --peach: #FFE5E0;
+            --mint: #D4F1E8;
+            --lavender: #E6E6FA;
+            --text-dark: #2D3436;
+            --text-light: #636E72;
+            --white: #FFFFFF;
         }
 
-        .gallery-grid {
-          grid-template-columns: repeat(2, 1fr);
-          grid-auto-rows: 220px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .gallery-item-large {
-          grid-column: span 2;
-        }
-      }
-
-      /* Mobile breakpoint */
-      @media (max-width: 768px) {
-        .hero {
-          padding: 7rem 5% 4rem;
+        body {
+            font-family: 'Heebo', sans-serif;
+            color: var(--text-dark);
+            background: var(--cream);
+            overflow-x: hidden;
         }
 
-        .hero-content {
-          margin: 0 auto;
+        /* Magical floating elements */
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
         }
 
-        .hero-title {
-          font-size: 3.2rem;
+        .shape {
+            position: absolute;
+            opacity: 0.15;
+            animation: float 20s infinite ease-in-out;
         }
 
-        .title-main {
-          font-size: 3.2rem;
+        .shape-1 {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
         }
 
-        .title-accent {
-          font-size: 2.2rem;
+        .shape-2 {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            bottom: 20%;
+            left: 5%;
+            animation-delay: -5s;
         }
 
-        .hero-subtitle {
-          font-size: 1.2rem;
+        .shape-3 {
+            width: 90px;
+            height: 90px;
+            background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+            top: 60%;
+            right: 20%;
+            animation-delay: -10s;
         }
 
-        .hero-description {
-          font-size: 1rem;
-          padding: 1.2rem 1.5rem;
+        .shape-4 {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--mint) 0%, transparent 70%);
+            top: 30%;
+            left: 15%;
+            animation-delay: -15s;
         }
 
-        .hero-contact-logos {
-          justify-content: center;
-          gap: 2rem;
-          margin-top: 2rem;
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(20px, -30px) scale(1.1); }
+            50% { transform: translate(-15px, 20px) scale(0.9); }
+            75% { transform: translate(30px, 10px) scale(1.05); }
         }
 
-        .contact-logo {
-          width: 45px;
-          height: 45px;
-        }
-
-        .hero-contact-buttons {
-          flex-direction: column;
-          gap: 1rem;
-          align-items: stretch;
-        }
-
-        .hero-contact-btn {
-          justify-content: center;
-          padding: 0.9rem 1.5rem;
-          font-size: 1rem;
-        }
-
-        .hero-features {
-          gap: 2rem;
-        }
-
-        .feature-icon {
-          width: 60px;
-          height: 60px;
-          font-size: 2rem;
-        }
-
-        .feature-text {
-          font-size: 0.9rem;
-        }
-
-        .section-title {
-          font-size: 2rem;
-        }
-
-        .quick-contact {
-          flex-direction: column;
-          align-items: center;
-          gap: 1.5rem;
-        }
-
-        .quick-contact-btn {
-          width: 100%;
-          max-width: 300px;
-          justify-content: center;
-        }
-
-        .cards-grid,
-        .doctors-grid,
-        .services-grid {
-          grid-template-columns: 1fr;
-        }
-
+        /* Header */
         header {
-          padding: 0.8rem 5%;
-          position: fixed;
-          background: rgba(255, 255, 255, 0.98);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.8rem 5%;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
         }
 
         .logo {
-          font-size: 1.2rem;
-          gap: 0.4rem;
+            font-family: 'Varela Round', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInDown 0.8s ease-out;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
 
         .logo-img {
-          width: 45px;
-          height: 45px;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(255, 154, 139, 0.2);
+            transition: all 0.3s ease;
         }
 
+        .logo:hover .logo-img {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 20px rgba(255, 154, 139, 0.3);
+        }
+
+        /* Header Address */
         .header-address {
-          display: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 118, 153, 0.08);
+            border-radius: 20px;
+            animation: fadeInDown 0.8s ease-out 0.2s backwards;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .contact-content {
-          grid-template-columns: 1fr;
+        .header-address:hover {
+            background: rgba(255, 118, 153, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 118, 153, 0.2);
         }
 
-        .contact-grid-row,
-        .contact-single-row {
-          grid-template-columns: 1fr;
-          margin-bottom: 1.5rem;
+        .address-icon {
+            color: var(--primary);
+            flex-shrink: 0;
         }
 
-        .contact-compact {
-          padding: 2rem 1.5rem;
+        .address-text {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            white-space: nowrap;
         }
 
-        .contact-compact .map-embed {
-          height: 250px;
+        /* Navigation */
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
         }
 
-        .hours-list .day-hours {
-          padding: 0.8rem 1rem;
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-button {
+            padding: 0.8rem 1.8rem;
+            background: var(--white);
+            color: #ff7699;
+            border: 2px solid #ff7699;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(255, 118, 153, 0.2);
+            transition: all 0.3s ease;
+            animation: fadeInDown 0.8s ease-out 0.2s backwards;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 118, 153, 0.3);
+            background: #ff7699;
+            color: var(--white);
+        }
+
+        /* Mobile menu button */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 10rem 5% 6rem;
+            text-align: center;
+            z-index: 1;
+            background-image: url('clinic-background.jpg');
+            background-size: cover;
+            background-position: 40% center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: none;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            margin-right: 5%;
+            text-align: right;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(255, 154, 139, 0.3);
+            animation: fadeInDown 0.8s ease-out backwards;
+        }
+
+        .badge-icon {
+            font-size: 1.2rem;
+        }
+
+        .hero-title {
+            font-family: 'Raashan', system-ui;
+            font-size: 5.5rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .title-main {
+            display: block;
+            color: #000000;
+            font-size: 5.5rem;
+        }
+
+        .title-accent {
+            display: block;
+            color: #000000;
+            font-size: 3.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.6rem;
+            color: #ff7699;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            font-family: 'Varela Round', sans-serif;
+            color: var(--text-dark);
+            max-width: 700px;
+            margin: 0 0 3rem 0;
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 1.3rem 1.7rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        /* Hero Contact Logos */
+        .hero-contact-logos {
+            display: flex;
+            justify-content: flex-start;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .contact-logo-link {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .contact-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .contact-logo-link:hover .contact-logo {
+            transform: scale(1.15);
+            filter: brightness(1.1);
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.8s backwards;
+        }
+
+        .hero-feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            background: var(--white);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(255, 154, 139, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .hero-feature:hover .feature-icon {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(255, 154, 139, 0.3);
+        }
+
+        .feature-text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Decorative heart */
+        .heart-decoration {
+            display: inline-block;
+            font-size: 2rem;
+            color: var(--primary);
+            margin: 0 0.5rem;
+            animation: heartbeat 2s infinite ease-in-out;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.2); }
+            30% { transform: scale(1); }
+        }
+
+        /* Info Cards */
+        .info-section {
+            position: relative;
+            padding: 2rem 5% 4rem;
+            z-index: 1;
+        }
+
+        .quick-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .quick-contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-out 0.5s backwards;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: var(--white);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
+        }
+
+        .email-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            animation-delay: 0.6s;
+        }
+
+        .email-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(255, 154, 139, 0.4);
+        }
+
+        .btn-icon {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-text {
+            font-family: 'Heebo', sans-serif;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.8s; }
+        .card:nth-child(2) { animation-delay: 1s; }
+        .card:nth-child(3) { animation-delay: 1.2s; }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--peach) 0%, transparent 100%);
+            border-radius: 0 0 0 100%;
+            opacity: 0.5;
+            transition: all 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .card:hover::before {
+            width: 150px;
+            height: 150px;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        .card:nth-child(1) .card-icon { animation-delay: 0s; }
+        .card:nth-child(2) .card-icon { animation-delay: 0.3s; }
+        .card:nth-child(3) .card-icon { animation-delay: 0.6s; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        /* Doctors Section */
+        .doctors-section {
+            position: relative;
+            padding: 6rem 5%;
+            background: var(--cream);
+            z-index: 1;
+        }
+
+        /* Opening Hours Section */
+        .hours-section {
+            position: relative;
+            padding: 6rem 5%;
+            background: var(--cream);
+            z-index: 1;
+        }
+
+        .hours-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hours-card {
+            background: var(--white);
+            border-radius: 35px;
+            padding: 3rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .hours-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .hours-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .day-hours {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            background: var(--peach);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .day-hours:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 5px 20px rgba(255, 154, 139, 0.2);
+        }
+
+        .day-hours.closed {
+            background: #F5F5F5;
+            opacity: 0.6;
         }
 
         .day {
-          font-size: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
         }
 
         .time {
-          font-size: 0.95rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-light);
         }
 
-        /* Gallery Responsive */
+        .day-hours.closed .time {
+            color: #999;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            font-family: 'Varela Round', sans-serif;
+        }
+
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .doctor-card {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .doctor-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            transition: height 0.4s ease;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 65px rgba(0, 0, 0, 0.15);
+        }
+
+        .doctor-card:hover::after {
+            height: 10px;
+        }
+
+        /* Join Us Card */
+        .join-us-card {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            color: var(--white);
+            border: none;
+        }
+
+        .join-us-card::after {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%);
+        }
+
+        .join-us-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .join-us-card .doctor-name,
+        .join-us-card .doctor-title,
+        .join-us-card .doctor-bio {
+            color: var(--white);
+        }
+
+        .join-icon-wrapper {
+            margin-bottom: 1.5rem;
+        }
+
+        .join-icon {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .join-us-card:hover .join-icon {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .join-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--white);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .join-btn:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+            background: var(--cream);
+        }
+
+        .join-arrow {
+            font-size: 1.4rem;
+            transition: transform 0.3s ease;
+        }
+
+        .join-btn:hover .join-arrow {
+            transform: translateX(5px);
+        }
+
+        .doctor-image-wrapper {
+            margin-bottom: 1.5rem;
+        }
+
+        .doctor-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(255, 154, 139, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .doctor-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(255, 154, 139, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .doctor-photo-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(255, 154, 139, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .doctor-card:hover .doctor-photo {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 154, 139, 0.4);
+        }
+
+        .doctor-card:hover .doctor-photo-circle {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 154, 139, 0.4);
+        }
+
+        .doctor-card:hover .doctor-image {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 154, 139, 0.4);
+        }
+
+        .doctor-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .doctor-title {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .doctor-bio {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        /* Services Section */
+        .services-section {
+            position: relative;
+            padding: 6rem 5%;
+            z-index: 1;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .service-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .service-item:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(255, 154, 139, 0.2);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Gallery Section */
         .gallery-section {
-          padding: 48px 5%;
+            position: relative;
+            padding: 72px 5%;
+            background: #FAFAFA;
+            overflow: hidden;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Gallery Header */
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 48px;
         }
 
         .gallery-title {
-          font-size: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2D3436;
+            margin-bottom: 12px;
+            font-family: 'Varela Round', sans-serif;
         }
 
         .gallery-subtitle {
-          font-size: 1rem;
+            font-size: 1.1rem;
+            color: #636E72;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
+        /* Masonry Grid */
         .gallery-grid {
-          grid-template-columns: 1fr;
-          grid-auto-rows: 280px;
-          gap: 16px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            grid-auto-rows: 240px;
         }
 
-        .gallery-item-large,
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.25s ease;
+        }
+
+        .gallery-item-large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
         .gallery-item-tall {
-          grid-column: span 1;
-          grid-row: span 1;
+            grid-row: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.25s ease;
+        }
+
+        .gallery-item:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Gallery Overlay */
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-view-btn {
+            background: white;
+            color: #2D3436;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            font-family: 'Heebo', sans-serif;
+        }
+
+        .gallery-view-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-view-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        #lightbox-image {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-caption {
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 8px 16px;
+        }
+
+        /* Lightbox Controls */
+        .lightbox-close,
+        .lightbox-prev,
+        .lightbox-next {
+            position: fixed;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 10000;
+        }
+
+        .lightbox-close {
+            top: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
         }
 
         .lightbox-prev,
         .lightbox-next {
-          width: 44px;
-          height: 44px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
         }
 
         .lightbox-prev {
-          left: 12px;
+            left: 24px;
         }
 
         .lightbox-next {
-          right: 12px;
+            right: 24px;
         }
 
-        .appointment-method {
-          flex-direction: column;
-          text-align: center;
-          align-items: center;
+        .lightbox-close:hover,
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) scale(1.1);
         }
 
-        .method-icon {
-          width: 70px;
-          height: 70px;
-          font-size: 2.8rem;
+        .lightbox-close:hover {
+            transform: scale(1.1);
         }
 
-        .whatsapp-link {
-          width: 100%;
-          justify-content: center;
+        .lightbox-close:focus,
+        .lightbox-prev:focus,
+        .lightbox-next:focus {
+            outline: 2px solid white;
+            outline-offset: 2px;
         }
 
-        .contact-form-container {
-          padding: 2rem 1.5rem;
-          margin-top: 3rem;
+        /* Contact Section */
+        .contact-section {
+            position: relative;
+            padding: 6rem 5%;
+            background: #e6eaec;
+            z-index: 1;
+        }
+
+        .contact-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .contact-grid-row {
+            max-width: 1400px;
+            margin: 0 auto 2.5rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .contact-single-row {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 0;
+        }
+
+        .contact-info {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-compact {
+            padding: 2rem;
+        }
+
+        .contact-compact h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-compact .info-item {
+            margin-bottom: 1rem;
+        }
+
+        .contact-compact .day-hours {
+            padding: 0.7rem 1.2rem;
+        }
+
+        .contact-compact .map-embed {
+            height: 220px;
+        }
+
+        .maccabi-appointment {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--peach);
+            text-align: center;
+        }
+
+        .appointment-text {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .appointment-text strong {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .maccabi-logo {
+            height: 40px;
         }
 
         .contact-form-card {
-          padding: 2rem 1.5rem;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
         }
 
         .contact-form-card h3 {
-          font-size: 1.3rem;
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
         }
 
-        .form-title {
-          font-size: 1.5rem;
-        }
-
-        .form-row {
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
-        }
-
-        .submit-btn {
-          width: 100%;
-          padding: 1rem 2rem;
+        .map-info {
+            padding: 2.5rem;
         }
 
         .address-nav-row {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .map-address {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin: 0;
+            font-weight: 500;
+            flex: 1;
         }
 
         .navigation-btn {
-          width: 100%;
-          justify-content: center;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
+            white-space: nowrap;
+        }
+
+        .navigation-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(66, 133, 244, 0.4);
+        }
+
+        .nav-icon {
+            font-size: 1.1rem;
+        }
+
+        .map-info .map-embed {
+            width: 100%;
+            height: 280px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 1.5rem;
         }
 
         .map-embed {
-          height: 250px;
+            width: 100%;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
         }
 
-        /* Mobile menu */
-        .menu-toggle {
-          display: flex;
-          z-index: 1001;
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+            font-weight: 700;
         }
 
-        nav {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          background: rgba(255, 255, 255, 0.98);
-          backdrop-filter: blur(10px);
-          padding: 0;
-          flex-direction: column;
-          gap: 0;
-          max-height: 0;
-          overflow: hidden;
-          transition:
-            max-height 0.4s ease,
-            padding 0.4s ease;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-          padding-top: 80px;
+        .hours-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        nav.active {
-          max-height: 500px;
-          padding: 80px 5% 2rem 5%;
+        .day-hours {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: var(--peach);
+            border-radius: 15px;
+            transition: all 0.3s ease;
         }
 
-        .nav-links {
-          flex-direction: column;
-          gap: 0;
-          width: 100%;
+        .day-hours:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 5px 15px rgba(255, 154, 139, 0.2);
         }
 
-        .nav-links li {
-          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        .day-hours.closed {
+            background: #F5F5F5;
+            opacity: 0.6;
         }
 
-        .nav-links li:last-child {
-          border-bottom: none;
+        .day {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
         }
 
-        .nav-links a {
-          font-size: 1.15rem;
-          text-align: center;
-          padding: 1.2rem;
-          display: block;
-          width: 100%;
+        .time {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
         }
 
-        .nav-links a::after {
-          display: none;
+        .day-hours.closed .time {
+            color: #999;
         }
 
-        .contact-button {
-          width: calc(100% - 4rem);
-          margin: 1.5rem 2rem;
-          text-align: center;
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
         }
-      }
 
-      /* Smooth scroll */
-      html {
-        scroll-behavior: smooth;
-      }
+        .info-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .info-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        .info-text strong {
+            display: block;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        /* WhatsApp Contact */
+        .whatsapp-contact-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .whatsapp-link-contact {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+            margin: -0.5rem;
+            border-radius: 10px;
+        }
+
+        .whatsapp-link-contact:hover {
+            background: rgba(37, 211, 102, 0.1);
+        }
+
+        .whatsapp-icon-contact {
+            width: 28px;
+            height: 28px;
+            color: #25D366;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-link-contact:hover .whatsapp-icon-contact {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-number {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            direction: ltr;
+            text-align: right;
+        }
+
+        .whatsapp-note {
+            display: block;
+            font-size: 0.85rem;
+            color: #25D366;
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+
+        .maccabi-appointment {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--peach);
+            text-align: center;
+        }
+
+        .appointment-text {
+            font-size: 1rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .appointment-text strong {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .maccabi-logo-link {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .maccabi-logo {
+            height: 50px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        .maccabi-logo-link:hover {
+            transform: translateY(-3px);
+        }
+
+        .maccabi-logo-link:hover .maccabi-logo {
+            filter: brightness(1.1);
+        }
+
+        /* Contact Form */
+        .appointment-info {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointment-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .appointment-method {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .method-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--mint) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(162, 155, 254, 0.2);
+        }
+
+        .appointment-method.urgent .method-icon {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        }
+
+        .method-text {
+            flex: 1;
+        }
+
+        .method-text h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .method-text p {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: var(--text-light);
+            margin-bottom: 0.7rem;
+        }
+
+        .appointment-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, var(--peach) 50%, transparent 100%);
+            margin: 0.2rem 0;
+        }
+
+        /* Contact Form */
+        .contact-form-container {
+            max-width: 800px;
+            margin: 4rem auto 0;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.9rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-family: 'Heebo', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 154, 139, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            margin: 0.5rem 0 0 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 154, 139, 0.3);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 154, 139, 0.4);
+        }
+
+        .btn-icon {
+            font-size: 1.2rem;
+        }
+
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1.3rem;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+            margin-top: 0.2rem;
+        }
+
+        .whatsapp-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-link .arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-link:hover .arrow {
+            transform: translateX(-5px);
+        }
+
+        /* Map Section */
+        .map-section {
+            position: relative;
+            padding: 4rem 5%;
+            z-index: 1;
+        }
+
+        .map-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 30px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .map-embed {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            padding: 3rem 5%;
+            text-align: center;
+            background: var(--text-dark);
+            color: var(--white);
+            z-index: 1;
+        }
+
+        footer p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        /* Tablet breakpoint */
+        @media (max-width: 1024px) {
+            .header-address {
+                display: flex;
+                padding: 0.4rem 0.9rem;
+                font-size: 0.9rem;
+            }
+
+            .address-text {
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                background-position: 25% center;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 220px;
+            }
+
+            .gallery-item-large {
+                grid-column: span 2;
+            }
+        }
+
+        /* Mobile breakpoint */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 8rem 5% 4rem;
+                background-position: 20% center;
+                background-attachment: scroll;
+            }
+
+            .hero-content {
+                margin: 0 auto;
+            }
+
+            .hero-title {
+                font-size: 3.2rem;
+            }
+
+            .title-main {
+                font-size: 3.2rem;
+            }
+
+            .title-accent {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+                padding: 1.2rem 1.5rem;
+            }
+
+            .hero-contact-logos {
+                justify-content: center;
+                gap: 2rem;
+                margin-top: 2rem;
+            }
+
+            .contact-logo {
+                width: 45px;
+                height: 45px;
+            }
+
+            .hero-contact-buttons {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .hero-contact-btn {
+                justify-content: center;
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .hero-features {
+                gap: 2rem;
+            }
+
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+
+            .feature-text {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .quick-contact {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .quick-contact-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .cards-grid,
+            .doctors-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 0.8rem 5%;
+                position: fixed;
+                background: rgba(255, 255, 255, 0.98);
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                justify-content: space-between;
+            }
+
+            .header-left {
+                width: auto;
+                gap: 1rem;
+                order: 0;
+            }
+
+            .menu-toggle {
+                order: -1;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+                gap: 0.4rem;
+            }
+
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .header-address {
+                display: flex;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+                width: 100%;
+                order: 1;
+                justify-content: center;
+            }
+
+            .address-text {
+                font-size: 0.85rem;
+            }
+
+            .address-icon {
+                width: 14px;
+                height: 14px;
+            }
+
+            nav {
+                order: 2;
+                width: 100%;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid-row,
+            .contact-single-row {
+                grid-template-columns: 1fr;
+                margin-bottom: 1.5rem;
+            }
+
+            .contact-compact {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-compact .map-embed {
+                height: 250px;
+            }
+
+            .hours-list .day-hours {
+                padding: 0.8rem 1rem;
+            }
+
+            .day {
+                font-size: 1rem;
+            }
+
+            .time {
+                font-size: 0.95rem;
+            }
+
+            /* Gallery Responsive */
+            .gallery-section {
+                padding: 48px 5%;
+            }
+
+            .gallery-title {
+                font-size: 2rem;
+            }
+
+            .gallery-subtitle {
+                font-size: 1rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 280px;
+                gap: 16px;
+            }
+
+            .gallery-item-large,
+            .gallery-item-tall {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .lightbox-prev,
+            .lightbox-next {
+                width: 44px;
+                height: 44px;
+            }
+
+            .lightbox-prev {
+                left: 12px;
+            }
+
+            .lightbox-next {
+                right: 12px;
+            }
+
+            .appointment-method {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+
+            .method-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2.8rem;
+            }
+
+            .whatsapp-link {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .contact-form-container {
+                padding: 2rem 1.5rem;
+                margin-top: 3rem;
+            }
+
+            .contact-form-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-form-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .form-title {
+                font-size: 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .submit-btn {
+                width: 100%;
+                padding: 1rem 2rem;
+            }
+
+            .address-nav-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .navigation-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .map-embed {
+                height: 250px;
+            }
+
+            /* Mobile menu */
+            .menu-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+
+            nav {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                padding: 0;
+                flex-direction: column;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease, padding 0.4s ease;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            nav.active {
+                max-height: 500px;
+                padding: 2rem 5%;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0;
+                width: 100%;
+            }
+
+            .nav-links li {
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-links a {
+                font-size: 1.15rem;
+                text-align: center;
+                padding: 1.2rem;
+                display: block;
+                width: 100%;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .contact-button {
+                width: calc(100% - 4rem);
+                margin: 1.5rem 2rem;
+                text-align: center;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <!-- Floating magical shapes -->
     <div class="floating-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
-      <div class="shape shape-4"></div>
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
     </div>
 
     <!-- Header -->
     <header id="header">
-      <div class="header-left">
-        <div
-          class="logo"
-          onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-        >
-          <img src="logo.png" alt="לוגו מרפאת דודבן" class="logo-img" />
-          <span>מרפאת הילדים</span>
+        <div class="header-left">
+            <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <img src="logo.png" alt="לוגו מרפאת דודבן" class="logo-img">
+                <span>מרפאת הילדים</span>
+            </div>
+            <a href="#directions" class="header-address">
+                <svg class="address-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span class="address-text">דובדבן 7, קריית אונו</span>
+            </a>
         </div>
-        <div class="header-address">
-          <svg
-            class="address-icon"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-          <span class="address-text">דובדבן 7, קריית אונו</span>
-        </div>
-      </div>
-      <button class="menu-toggle" onclick="toggleMenu()" aria-label="תפריט">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav id="nav">
-        <ul class="nav-links">
-          <li><a href="#hero" onclick="closeMenu()">בית</a></li>
-          <li><a href="#gallery" onclick="closeMenu()">אודות</a></li>
-          <li><a href="#doctors" onclick="closeMenu()">הצוות</a></li>
-          <li><a href="#directions" onclick="closeMenu()">דרכי הגעה</a></li>
-          <li><a href="#contact" onclick="closeMenu()">צור קשר</a></li>
-        </ul>
-        <a
-          href="https://www.maccabi4u.co.il/"
-          target="_blank"
-          class="contact-button"
-        >
-          קבע תור
-        </a>
-      </nav>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="תפריט">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="nav">
+            <ul class="nav-links">
+                <li><a href="#hero" onclick="closeMenu()">בית</a></li>
+                <li><a href="#gallery" onclick="closeMenu()">אודות</a></li>
+                <li><a href="#doctors" onclick="closeMenu()">הצוות</a></li>
+                <li><a href="#contact" onclick="closeMenu()">צור קשר</a></li>
+            </ul>
+            <a href="https://www.maccabi4u.co.il/" target="_blank" class="contact-button">
+                קבע תור
+            </a>
+        </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          <span class="title-main">מרפאת הילדים</span>
-          <span class="title-accent">בדובדבן</span>
-        </h1>
-        <p class="hero-subtitle">בית למומחים ברפואת ילדים</p>
-        <p class="hero-description">
-          המרפאה שלנו מציעה מענה רפואי מקיף לילדים מכל הגילאים, עם צוות מקצועי
-          ומסור שמלווה את המשפחות בדרך לבריאות מיטבית. אצלנו תמצאו תחת קורת גג
-          אחת את כל השירותים הרפואיים והפארא-רפואיים שהילדים שלכם צריכים.
-        </p>
-        <div class="hero-contact-logos">
-          <a
-            href="https://wa.me/972559507741"
-            target="_blank"
-            class="contact-logo-link"
-          >
-            <img src="whatsapp_logo.png" alt="WhatsApp" class="contact-logo" />
-          </a>
-          <a href="mailto:info@dudvan-clinic.co.il" class="contact-logo-link">
-            <img src="mail_logo.png" alt="Email" class="contact-logo" />
-          </a>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-main">מרפאת הילדים</span>
+                <span class="title-accent">בדובדבן</span>
+            </h1>
+            <p class="hero-subtitle">בית למומחים ברפואת ילדים</p>
+            <p class="hero-description">
+                המרפאה שלנו מציעה מענה רפואי מקיף לילדים מכל הגילאים, עם צוות מקצועי ומסור שמלווה את המשפחות בדרך לבריאות מיטבית. אצלנו תמצאו תחת קורת גג אחת את כל השירותים הרפואיים והפארא-רפואיים שהילדים שלכם צריכים.
+            </p>
+            <div class="hero-contact-logos">
+                <a href="https://wa.me/972559507741" target="_blank" class="contact-logo-link">
+                    <img src="whatsapp_logo.png" alt="WhatsApp" class="contact-logo">
+                </a>
+                <a href="/cdn-cgi/l/email-protection#1871767e77587c6d7c6e7976357b747176717b367b77367174" class="contact-logo-link">
+                    <img src="mail_logo.png" alt="Email" class="contact-logo">
+                </a>
+            </div>
         </div>
-      </div>
     </section>
+
 
     <!-- Gallery Section -->
     <section id="gallery" class="gallery-section">
-      <div class="gallery-container">
-        <div class="gallery-header">
-          <h2 class="gallery-title">המרפאה שלנו</h2>
-          <p class="gallery-subtitle">
-            סביבה חמה ומזמינה שנועדה במיוחד עבור ילדים ומשפחותיהם
-          </p>
+        <div class="gallery-container">
+            <div class="gallery-header">
+                <h2 class="gallery-title">המרפאה שלנו</h2>
+                <p class="gallery-subtitle">סביבה חמה ומזמינה שנועדה במיוחד עבור ילדים ומשפחותיהם</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item gallery-item-large" data-index="0">
+                    <img src="gallery1.jpg" alt="מרפאת הילדים בדובדבן" loading="lazy">
+                    <div class="gallery-overlay">
+                        <button class="gallery-view-btn" aria-label="הצג תמונה">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                            <span>הצג</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-index="1">
+                    <img src="gallery2.jpg" alt="חדר טיפולים" loading="lazy">
+                    <div class="gallery-overlay">
+                        <button class="gallery-view-btn" aria-label="הצג תמונה">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                            <span>הצג</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-index="2">
+                    <img src="gallery3.jpg" alt="אזור המתנה" loading="lazy">
+                    <div class="gallery-overlay">
+                        <button class="gallery-view-btn" aria-label="הצג תמונה">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                            <span>הצג</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery-item gallery-item-tall" data-index="3">
+                    <img src="gallery4.jpg" alt="חדר ייעוץ" loading="lazy">
+                    <div class="gallery-overlay">
+                        <button class="gallery-view-btn" aria-label="הצג תמונה">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                            <span>הצג</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="gallery-grid">
-          <div class="gallery-item gallery-item-large" data-index="0">
-            <img src="gallery1.jpg" alt="מרפאת הילדים בדובדבן" loading="lazy" />
-            <div class="gallery-overlay">
-              <button class="gallery-view-btn" aria-label="הצג תמונה">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <path d="m21 21-4.35-4.35"></path>
-                </svg>
-                <span>הצג</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-index="1">
-            <img src="gallery2.jpg" alt="חדר טיפולים" loading="lazy" />
-            <div class="gallery-overlay">
-              <button class="gallery-view-btn" aria-label="הצג תמונה">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <path d="m21 21-4.35-4.35"></path>
-                </svg>
-                <span>הצג</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="gallery-item" data-index="2">
-            <img src="gallery3.jpg" alt="אזור המתנה" loading="lazy" />
-            <div class="gallery-overlay">
-              <button class="gallery-view-btn" aria-label="הצג תמונה">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <path d="m21 21-4.35-4.35"></path>
-                </svg>
-                <span>הצג</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="gallery-item gallery-item-tall" data-index="3">
-            <img src="gallery4.jpg" alt="חדר ייעוץ" loading="lazy" />
-            <div class="gallery-overlay">
-              <button class="gallery-view-btn" aria-label="הצג תמונה">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <path d="m21 21-4.35-4.35"></path>
-                </svg>
-                <span>הצג</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- Lightbox Modal -->
     <div id="lightbox" class="lightbox" aria-hidden="true">
-      <button class="lightbox-close" aria-label="סגור" title="סגור (Esc)">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
+        <button class="lightbox-close" aria-label="סגור" title="סגור (Esc)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
 
-      <button class="lightbox-prev" aria-label="תמונה קודמת" title="קודם (←)">
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
+        <button class="lightbox-prev" aria-label="תמונה קודמת" title="קודם (←)">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
 
-      <button class="lightbox-next" aria-label="תמונה הבאה" title="הבא (→)">
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </button>
+        <button class="lightbox-next" aria-label="תמונה הבאה" title="הבא (→)">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
 
-      <div class="lightbox-content">
-        <img id="lightbox-image" src="" alt="" />
-        <p id="lightbox-caption" class="lightbox-caption"></p>
-      </div>
+        <div class="lightbox-content">
+            <img id="lightbox-image" src="" alt="">
+            <p id="lightbox-caption" class="lightbox-caption"></p>
+        </div>
     </div>
 
     <!-- Doctors Section -->
     <section id="doctors" class="doctors-section">
-      <h2 class="section-title">הכירו את הצוות שלנו</h2>
-      <div class="doctors-grid">
-        <div class="doctor-card">
-          <div class="doctor-image-wrapper">
-            <div class="doctor-image">👩‍⚕️</div>
-          </div>
-          <h3 class="doctor-name">ד״ר דפנה נסלרוט</h3>
-          <p class="doctor-title">מומחית לרפואת ילדים</p>
-          <p class="doctor-bio">
-            ד״ר נסלרוט היא רופאת ילדים מומחית עם ניסיון רב בטיפול בילדים מכל
-            הגילאים. היא מתמחה באבחון וטיפול במחלות ילדים ומציעה גישה חמה
-            ומקצועית לכל משפחה.
-          </p>
+        <h2 class="section-title">הכירו את הצוות שלנו</h2>
+        <div class="doctors-grid">
+            <div class="doctor-card">
+                <div class="doctor-image-wrapper">
+                    <div class="doctor-image">👩‍⚕️</div>
+                </div>
+                <h3 class="doctor-name">ד״ר דפנה נסלרוט</h3>
+                <p class="doctor-title">מומחית לרפואת ילדים</p>
+                <p class="doctor-bio">ד״ר נסלרוט היא רופאת ילדים מומחית עם ניסיון רב בטיפול בילדים מכל הגילאים. היא מתמחה באבחון וטיפול במחלות ילדים ומציעה גישה חמה ומקצועית לכל משפחה.</p>
+            </div>
+            <div class="doctor-card">
+                <div class="doctor-image-wrapper">
+                    <div class="doctor-image">👩‍⚕️</div>
+                </div>
+                <h3 class="doctor-name">ד״ר אורלי אוחנה</h3>
+                <p class="doctor-title">מומחית לרפואת ילדים</p>
+                <p class="doctor-bio">ד״ר אוחנה מביאה עמה ניסיון עשיר בטיפול רפואי מקיף לילדים. היא מאמינה בגישה הוליסטית המשלבת רפואה מודרנית עם תשומת לב אישית לכל ילד.</p>
+            </div>
+            <div class="doctor-card">
+                <div class="doctor-image-wrapper">
+                    <img src="shai.svg" alt="ד״ר שי שמש" class="doctor-photo-circle">
+                </div>
+                <h3 class="doctor-name">ד״ר שי שמש</h3>
+                <p class="doctor-title">רופא אא״ג ילדים</p>
+                <p class="doctor-bio">ד״ר שמש הינו מומחה מוערך באף, אוזן וגרון עם ניסיון רב בטיפול בילדים. הוא מציע טיפול מקצועי ואכפתי, תוך שמירה על קשר אמיתי עם הילדים והוריהם ומתן מענה רפואי ברמה הגבוהה ביותר.</p>
+            </div>
+            <div class="doctor-card">
+                <div class="doctor-image-wrapper">
+                    <img src="sarina.svg" alt="ד״ר שרינה לוי" class="doctor-photo-circle">
+                </div>
+                <h3 class="doctor-name">ד״ר שרינה לוי</h3>
+                <p class="doctor-title">המטולוגית ילדים</p>
+                <p class="doctor-bio">ד״ר לוי היא רופאת ילדים מנוסה המתמחה במעקב התפתחותי וטיפול מונע. היא מאמינה בחשיבות של בניית אמון ושיתוף פעולה עם ההורים לבריאות מיטבית של הילדים.</p>
+            </div>
+            <div class="doctor-card">
+                <div class="doctor-image-wrapper">
+                    <img src="moriel.svg" alt="מוריאל שפירא" class="doctor-photo-circle">
+                </div>
+                <h3 class="doctor-name">מוריאל שפירא</h3>
+                <p class="doctor-title">דיאטנית ילדים ותינוקות</p>
+                <p class="doctor-bio">מוריאל היא דיאטנית קלינית מומחית לתזונת ילדים ותינוקות. היא מציעה ליווי תזונתי מקצועי, תוכניות תזונה מותאמות אישית, וייעוץ להורים בנושאי האכלה בריאה.</p>
+            </div>
+            <div class="doctor-card join-us-card">
+                <div class="join-icon-wrapper">
+                    <div class="join-icon">🌟</div>
+                </div>
+                <h3 class="doctor-name">הצטרפו אלינו!</h3>
+                <p class="doctor-bio">אנחנו מחפשים רופאי ילדים מומחים, קלינאיות תקשורת, מטפלים רגשיים, תזונאיות ואנשי מקצוע נוספים להצטרף לצוות המקצועי שלנו. בואו להיות חלק ממרפאה מובילה ומחויבת למצוינות בטיפול בילדים.</p>
+                <a href="/cdn-cgi/l/email-protection#1d74737b725d7968796b7c73307e717473747e337e72337471" class="join-btn">
+                    <span>דברו איתנו</span>
+                    <span class="join-arrow">→</span>
+                </a>
+            </div>
         </div>
-        <div class="doctor-card">
-          <div class="doctor-image-wrapper">
-            <div class="doctor-image">👩‍⚕️</div>
-          </div>
-          <h3 class="doctor-name">ד״ר אורלי אוחנה</h3>
-          <p class="doctor-title">מומחית לרפואת ילדים</p>
-          <p class="doctor-bio">
-            ד״ר אוחנה מביאה עמה ניסיון עשיר בטיפול רפואי מקיף לילדים. היא מאמינה
-            בגישה הוליסטית המשלבת רפואה מודרנית עם תשומת לב אישית לכל ילד.
-          </p>
-        </div>
-        <div class="doctor-card">
-          <div class="doctor-image-wrapper">
-            <img src="shai.svg" alt="ד״ר שי שמש" class="doctor-photo-circle" />
-          </div>
-          <h3 class="doctor-name">ד״ר שי שמש</h3>
-          <p class="doctor-title">רופא אא״ג ילדים</p>
-          <p class="doctor-bio">
-            ד״ר שמש הינו מומחה מוערך באף, אוזן וגרון עם ניסיון רב בטיפול בילדים.
-            הוא מציע טיפול מקצועי ואכפתי, תוך שמירה על קשר אמיתי עם הילדים
-            והוריהם ומתן מענה רפואי ברמה הגבוהה ביותר.
-          </p>
-        </div>
-        <div class="doctor-card">
-          <div class="doctor-image-wrapper">
-            <img
-              src="sarina.svg"
-              alt="ד״ר שרינה לוי"
-              class="doctor-photo-circle"
-            />
-          </div>
-          <h3 class="doctor-name">ד״ר שרינה לוי</h3>
-          <p class="doctor-title">המטולוגית ילדים</p>
-          <p class="doctor-bio">
-            ד״ר לוי היא רופאת ילדים מנוסה המתמחה במעקב התפתחותי וטיפול מונע. היא
-            מאמינה בחשיבות של בניית אמון ושיתוף פעולה עם ההורים לבריאות מיטבית
-            של הילדים.
-          </p>
-        </div>
-        <div class="doctor-card">
-          <div class="doctor-image-wrapper">
-            <img
-              src="moriel.svg"
-              alt="מוריאל שפירא"
-              class="doctor-photo-circle"
-            />
-          </div>
-          <h3 class="doctor-name">מוריאל שפירא</h3>
-          <p class="doctor-title">דיאטנית ילדים ותינוקות</p>
-          <p class="doctor-bio">
-            מוריאל היא דיאטנית קלינית מומחית לתזונת ילדים ותינוקות. היא מציעה
-            ליווי תזונתי מקצועי, תוכניות תזונה מותאמות אישית, וייעוץ להורים
-            בנושאי האכלה בריאה.
-          </p>
-        </div>
-        <div class="doctor-card join-us-card">
-          <div class="join-icon-wrapper">
-            <div class="join-icon">🌟</div>
-          </div>
-          <h3 class="doctor-name">הצטרפו אלינו!</h3>
-          <p class="doctor-bio">
-            אנחנו מחפשים רופאי ילדים מומחים, קלינאיות תקשורת, מטפלים רגשיים,
-            תזונאיות ואנשי מקצוע נוספים להצטרף לצוות המקצועי שלנו. בואו להיות
-            חלק ממרפאה מובילה ומחויבת למצוינות בטיפול בילדים.
-          </p>
-          <a href="mailto:info@dudvan-clinic.co.il" class="join-btn">
-            <span>דברו איתנו</span>
-            <span class="join-arrow">→</span>
-          </a>
-        </div>
-      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
-      <h2 class="section-title">צרו קשר</h2>
+        <h2 class="section-title">צרו קשר</h2>
 
-      <!-- Single Row: Contact Info + Hours + Map -->
-      <div class="contact-grid-row contact-single-row">
-        <div class="contact-info contact-compact">
-          <h3>פרטי התקשרות</h3>
-          <div class="info-item">
-            <div class="info-icon">📍</div>
-            <div class="info-text">
-              <strong>כתובת</strong>
-              דובדבן 7, קריית אונו
+        <!-- Single Row: Contact Info + Hours + Map -->
+        <div class="contact-grid-row contact-single-row">
+            <div class="contact-info contact-compact">
+                <h3>פרטי התקשרות</h3>
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <strong>כתובת</strong>
+                        דובדבן 7, קריית אונו
+                    </div>
+                </div>
+                <div class="info-item whatsapp-contact-item">
+                    <a href="https://wa.me/972559507741" target="_blank" class="whatsapp-link-contact">
+                        <svg class="whatsapp-icon-contact" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        <div class="info-text">
+                            <strong>וואטסאפ</strong>
+                            <span class="whatsapp-number">055-950-7741</span>
+                            <span class="whatsapp-note">זמין להודעות וואטסאפ בלבד</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">📧</div>
+                    <div class="info-text">
+                        <strong>אימייל</strong>
+                        <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8ce5e2eae3cce8f9e8faede2a1efe0e5e2e5efa2efe3a2e5e0">[email&#160;protected]</a>
+                    </div>
+                </div>
+                <div class="maccabi-appointment">
+                    <p class="appointment-text">ניתן לקבוע תורים דרך אפליקציית או אתר מכבי, או מוקד זימון תורים <strong>*3555</strong></p>
+                    <a href="https://www.maccabi4u.co.il/" target="_blank" class="maccabi-logo-link">
+                        <img src="maccabi-logo.png" alt="מכבי שירותי בריאות" class="maccabi-logo">
+                    </a>
+                </div>
             </div>
-          </div>
-          <div class="info-item whatsapp-contact-item">
-            <a
-              href="https://wa.me/972559507741"
-              target="_blank"
-              class="whatsapp-link-contact"
-            >
-              <svg
-                class="whatsapp-icon-contact"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
-                />
-              </svg>
-              <div class="info-text">
-                <strong>וואטסאפ</strong>
-                <span class="whatsapp-number">055-950-7741</span>
-                <span class="whatsapp-note">זמין להודעות וואטסאפ בלבד</span>
-              </div>
-            </a>
-          </div>
-          <div class="info-item">
-            <div class="info-icon">📧</div>
-            <div class="info-text">
-              <strong>אימייל</strong>
-              info@dudvan-clinic.co.il
-            </div>
-          </div>
-          <div class="maccabi-appointment">
-            <p class="appointment-text">
-              ניתן לקבוע תורים דרך אפליקציית או אתר מכבי, או מוקד זימון תורים
-              <strong>*3555</strong>
-            </p>
-            <a
-              href="https://www.maccabi4u.co.il/"
-              target="_blank"
-              class="maccabi-logo-link"
-            >
-              <img
-                src="maccabi-logo.png"
-                alt="מכבי שירותי בריאות"
-                class="maccabi-logo"
-              />
-            </a>
-          </div>
-        </div>
 
-        <div class="contact-info hours-info contact-compact">
-          <h3>שעות פעילות</h3>
-          <div class="hours-list">
-            <div class="day-hours">
-              <span class="day">ראשון</span>
-              <span class="time">8:00 - 19:00</span>
+            <div class="contact-info hours-info contact-compact">
+                <h3>שעות פעילות</h3>
+                <div class="hours-list">
+                    <div class="day-hours">
+                        <span class="day">ראשון</span>
+                        <span class="time">8:00 - 19:00</span>
+                    </div>
+                    <div class="day-hours">
+                        <span class="day">שני</span>
+                        <span class="time">8:00 - 19:00</span>
+                    </div>
+                    <div class="day-hours">
+                        <span class="day">שלישי</span>
+                        <span class="time">8:00 - 19:00</span>
+                    </div>
+                    <div class="day-hours">
+                        <span class="day">רביעי</span>
+                        <span class="time">8:00 - 19:00</span>
+                    </div>
+                    <div class="day-hours">
+                        <span class="day">חמישי</span>
+                        <span class="time">8:00 - 19:00</span>
+                    </div>
+                    <div class="day-hours">
+                        <span class="day">שישי</span>
+                        <span class="time">8:00 - 13:00</span>
+                    </div>
+                    <div class="day-hours closed">
+                        <span class="day">שבת</span>
+                        <span class="time">סגור</span>
+                    </div>
+                </div>
             </div>
-            <div class="day-hours">
-              <span class="day">שני</span>
-              <span class="time">8:00 - 19:00</span>
-            </div>
-            <div class="day-hours">
-              <span class="day">שלישי</span>
-              <span class="time">8:00 - 19:00</span>
-            </div>
-            <div class="day-hours">
-              <span class="day">רביעי</span>
-              <span class="time">8:00 - 19:00</span>
-            </div>
-            <div class="day-hours">
-              <span class="day">חמישי</span>
-              <span class="time">8:00 - 19:00</span>
-            </div>
-            <div class="day-hours">
-              <span class="day">שישי</span>
-              <span class="time">8:00 - 13:00</span>
-            </div>
-            <div class="day-hours closed">
-              <span class="day">שבת</span>
-              <span class="time">סגור</span>
-            </div>
-          </div>
-        </div>
 
-        <div class="contact-info map-info contact-compact" id="directions">
-          <h3>איך מגיעים?</h3>
-          <div class="address-nav-row">
-            <p class="map-address">דובדבן 7, קריית אונו</p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&destination=דובדבן+7+קריית+אונו"
-              target="_blank"
-              class="navigation-btn"
-            >
-              <span class="nav-icon">🧭</span>
-              <span class="nav-text">לניווט</span>
-            </a>
-          </div>
-          <div class="map-embed">
-            <iframe
-              src="https://maps.google.com/maps?q=דובדבן+7+קריית+אונו&t=&z=16&ie=UTF8&iwloc=&output=embed"
-              width="100%"
-              height="100%"
-              style="border: 0; border-radius: 15px"
-              allowfullscreen=""
-              loading="lazy"
-            >
-            </iframe>
-          </div>
+            <div class="contact-info map-info contact-compact" id="directions">
+                <h3>איך מגיעים?</h3>
+                <div class="address-nav-row">
+                    <p class="map-address">דובדבן 7, קריית אונו</p>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=דובדבן+7+קריית+אונו" target="_blank" class="navigation-btn">
+                        <span class="nav-icon">🧭</span>
+                        <span class="nav-text">לניווט</span>
+                    </a>
+                </div>
+                <div class="map-embed">
+                    <iframe src="https://maps.google.com/maps?q=דובדבן+7+קריית+אונו&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                            width="100%"
+                            height="100%"
+                            style="border:0; border-radius: 15px;"
+                            allowfullscreen=""
+                            loading="lazy">
+                    </iframe>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-      <p>כל הזכויות שמורות למרפאת הילדים, 2026</p>
+        <p>כל הזכויות שמורות למרפאת הילדים, 2026</p>
     </footer>
 
-    <script>
-      // Mobile menu toggle
-      function toggleMenu() {
-        const nav = document.getElementById("nav");
-        const menuToggle = document.querySelector(".menu-toggle");
-        nav.classList.toggle("active");
-        menuToggle.classList.toggle("active");
-      }
-
-      function closeMenu() {
-        const nav = document.getElementById("nav");
-        const menuToggle = document.querySelector(".menu-toggle");
-        nav.classList.remove("active");
-        menuToggle.classList.remove("active");
-      }
-
-      // Header scroll effect
-      window.addEventListener("scroll", () => {
-        const header = document.getElementById("header");
-        if (window.scrollY > 50) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const nav = document.getElementById('nav');
+            const menuToggle = document.querySelector('.menu-toggle');
+            nav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
         }
-      });
 
-      // Modern Gallery with Lightbox
-      const galleryImages = [
-        { src: "gallery1.jpg", alt: "מרפאת הילדים בדובדבן" },
-        { src: "gallery2.jpg", alt: "חדר טיפולים" },
-        { src: "gallery3.jpg", alt: "אזור המתנה" },
-        { src: "gallery4.jpg", alt: "חדר ייעוץ" },
-      ];
+        function closeMenu() {
+            const nav = document.getElementById('nav');
+            const menuToggle = document.querySelector('.menu-toggle');
+            nav.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
 
-      let currentImageIndex = 0;
-
-      // Lightbox elements
-      const lightbox = document.getElementById("lightbox");
-      const lightboxImage = document.getElementById("lightbox-image");
-      const lightboxCaption = document.getElementById("lightbox-caption");
-      const lightboxClose = document.querySelector(".lightbox-close");
-      const lightboxPrev = document.querySelector(".lightbox-prev");
-      const lightboxNext = document.querySelector(".lightbox-next");
-
-      // Open lightbox
-      function openLightbox(index) {
-        currentImageIndex = index;
-        updateLightboxImage();
-        lightbox.classList.add("active");
-        lightbox.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-      }
-
-      // Close lightbox
-      function closeLightbox() {
-        lightbox.classList.remove("active");
-        lightbox.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-      }
-
-      // Update lightbox image
-      function updateLightboxImage() {
-        const image = galleryImages[currentImageIndex];
-        lightboxImage.src = image.src;
-        lightboxImage.alt = image.alt;
-        lightboxCaption.textContent = image.alt;
-      }
-
-      // Navigate lightbox
-      function navigateLightbox(direction) {
-        currentImageIndex =
-          (currentImageIndex + direction + galleryImages.length) %
-          galleryImages.length;
-        updateLightboxImage();
-      }
-
-      // Event listeners for gallery items
-      document.querySelectorAll(".gallery-item").forEach((item) => {
-        item.addEventListener("click", () => {
-          const index = parseInt(item.dataset.index);
-          openLightbox(index);
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
-      });
 
-      // Lightbox controls
-      lightboxClose.addEventListener("click", closeLightbox);
-      lightboxPrev.addEventListener("click", () => navigateLightbox(-1));
-      lightboxNext.addEventListener("click", () => navigateLightbox(1));
+        // Modern Gallery with Lightbox
+        const galleryImages = [
+            { src: 'gallery1.jpg', alt: 'מרפאת הילדים בדובדבן' },
+            { src: 'gallery2.jpg', alt: 'חדר טיפולים' },
+            { src: 'gallery3.jpg', alt: 'אזור המתנה' },
+            { src: 'gallery4.jpg', alt: 'חדר ייעוץ' }
+        ];
 
-      // Close on backdrop click
-      lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) {
-          closeLightbox();
+        let currentImageIndex = 0;
+
+        // Lightbox elements
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const lightboxPrev = document.querySelector('.lightbox-prev');
+        const lightboxNext = document.querySelector('.lightbox-next');
+
+        // Open lightbox
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightboxImage();
+            lightbox.classList.add('active');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
         }
-      });
 
-      // Keyboard navigation
-      document.addEventListener("keydown", (e) => {
-        if (!lightbox.classList.contains("active")) return;
+        // Close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
 
-        if (e.key === "Escape") closeLightbox();
-        if (e.key === "ArrowLeft" || e.key === "Left") navigateLightbox(1); // RTL: left goes next
-        if (e.key === "ArrowRight" || e.key === "Right") navigateLightbox(-1); // RTL: right goes prev
-      });
+        // Update lightbox image
+        function updateLightboxImage() {
+            const image = galleryImages[currentImageIndex];
+            lightboxImage.src = image.src;
+            lightboxImage.alt = image.alt;
+            lightboxCaption.textContent = image.alt;
+        }
 
-      // Smooth scroll for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            const headerOffset = 80;
-            const elementPosition = target.getBoundingClientRect().top;
-            const offsetPosition =
-              elementPosition + window.pageYOffset - headerOffset;
+        // Navigate lightbox
+        function navigateLightbox(direction) {
+            currentImageIndex = (currentImageIndex + direction + galleryImages.length) % galleryImages.length;
+            updateLightboxImage();
+        }
 
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth",
+        // Event listeners for gallery items
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const index = parseInt(item.dataset.index);
+                openLightbox(index);
             });
-          }
         });
-      });
 
-      // Add scroll-triggered animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
+        // Lightbox controls
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
+        lightboxNext.addEventListener('click', () => navigateLightbox(1));
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-          }
+        // Close on backdrop click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
         });
-      }, observerOptions);
 
-      document
-        .querySelectorAll(".card, .doctor-card, .service-item")
-        .forEach((el) => {
-          observer.observe(el);
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft' || e.key === 'Left') navigateLightbox(1); // RTL: left goes next
+            if (e.key === 'ArrowRight' || e.key === 'Right') navigateLightbox(-1); // RTL: right goes prev
         });
-    </script>
-  </body>
-</html>
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
