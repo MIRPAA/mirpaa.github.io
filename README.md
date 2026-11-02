@@ -1,6 +1,6 @@
 # Mirpaa Website
 
-This will host a static website for the clinic, under /docs
+This will host a static website for a children's clinic, under /docs
 
 install with uv
 
