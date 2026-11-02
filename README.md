@@ -15,3 +15,8 @@ or just
     $ make
 
 commit, push, merge!
+
+The website is on: 
+
+- https://www.duvdevan-kids.co.il/
+- https://mirpaa.github.io
