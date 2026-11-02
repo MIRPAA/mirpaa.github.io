@@ -3,17 +3,20 @@
 
 מה יש בתיקייה
 --------------
-index.html            העמוד הראשי (כולל עמודי הצוות, השכרת מרפאות, הצהרת נגישות)
+index.html            העמוד הראשי
+team/<שם>/index.html  עמוד נפרד לכל איש צוות (למשל team/shai/ – ד"ר שי שמש)
+rent/index.html       עמוד השכרת מרפאות
+accessibility/index.html  הצהרת נגישות
 404.html              עמוד "העמוד לא נמצא" לכתובות שגויות
 img/                  כל התמונות
-favicon.svg, favicon-32.png, apple-touch-icon.png, icon-192.png, icon-512.png   סמלי האתר
+favicon.png, favicon-32.png, apple-touch-icon.png, icon-192.png, icon-512.png   סמלי האתר
 og-image.jpg          התמונה שמופיעה כשמשתפים את האתר בוואטסאפ/פייסבוק
 robots.txt, sitemap.xml, site.webmanifest   קבצים למנועי חיפוש ולדפדפנים
 
 לפני ההעלאה – לבדוק
 -------------------
 1. כתובת האתר: הקבצים מוגדרים לכתובת https://www.dudvan-clinic.co.il
-   אם הכתובת שונה, יש להחליף אותה ב-index.html, 404.html, robots.txt ו-sitemap.xml.
+   אם הכתובת שונה, יש להחליף אותה בכל קבצי ה-HTML (כולל בתיקיות team, rent, accessibility), ב-robots.txt וב-sitemap.xml.
 2. יש להעלות את כל התיקייה כמו שהיא, לשורש האתר (לא לתת-תיקייה).
 
 דרכי העלאה (כל אחת מספיקה)
@@ -28,6 +31,16 @@ robots.txt, sitemap.xml, site.webmanifest   קבצים למנועי חיפוש �
 -----------
 - לוודא שהאתר נפתח ב-https (עם מנעול).
 - מפת Google החיה בחלק "דרכי הגעה" תופיע אוטומטית.
-- מומלץ לרשום את האתר ב-Google Search Console ולהגיש את sitemap.xml.
+- מומלץ לרשום את האתר ב-Google Search Console ולהגיש את sitemap.xml – כך גוגל יגלה מהר את כל העמודים, כולל העמודים האישיים של אנשי הצוות.
+- קישורים ישירים לשליחה, לדוגמה:
+  https://www.dudvan-clinic.co.il/team/shai/    ד"ר שי שמש
+  https://www.dudvan-clinic.co.il/team/dafna/   ד"ר דפנה נסלרוט
+  https://www.dudvan-clinic.co.il/team/orly/    ד"ר אורלי אוחנה
+  https://www.dudvan-clinic.co.il/team/leah/    ד"ר לאה אלקובי
+  https://www.dudvan-clinic.co.il/team/nofar/   נופר ברקני רמות
+  https://www.dudvan-clinic.co.il/team/fanny/   פאני לביא-טרבלסי
+  https://www.dudvan-clinic.co.il/team/tal/     טל הדס
+  https://www.dudvan-clinic.co.il/team/lital/   ליטל יצחק
+  https://www.dudvan-clinic.co.il/rent/         השכרת מרפאות
 - מומלץ לפתוח / לעדכן פרופיל Google Business של המרפאה עם אותה כתובת.
 - טופס "מעוניינים בחדר?" שולח הודעת וואטסאפ – אין צורך בשרת.
