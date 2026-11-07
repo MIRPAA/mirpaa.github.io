@@ -9,8 +9,6 @@ rent/index.html       עמוד השכרת מרפאות
 accessibility/index.html  הצהרת נגישות
 404.html              עמוד "העמוד לא נמצא" לכתובות שגויות
 img/                  כל התמונות
-css/site.css          העיצוב של כל העמודים (קובץ משותף)
-js/site.js            הקוד של כל העמודים (קובץ משותף) – כולל פרטי אנשי הצוות (TEAM)
 favicon.png, favicon-32.png, apple-touch-icon.png, icon-192.png, icon-512.png   סמלי האתר
 og-image.jpg          התמונה שמופיעה כשמשתפים את האתר בוואטסאפ/פייסבוק
 robots.txt, sitemap.xml, site.webmanifest   קבצים למנועי חיפוש ולדפדפנים
