@@ -744,3 +744,6 @@ footer{border-top:1px solid var(--line);padding-block:36px;color:var(--muted);fo
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero .hv-wrap::after{background:#2a3358}}
 @media (max-width:860px){.hero .hero-grid{grid-template-columns:1fr}.hero .hv-frame{aspect-ratio:4/3}.hero .hv-wrap::after{display:none}}
 .area-note{margin-top:.6rem;max-width:62ch}
+.nav a,.burger{-webkit-tap-highlight-color:transparent}
+.nav a:active{background:var(--bg-2);color:var(--ink)}
+.nav a:focus-visible{outline:2px solid var(--focus)!important;outline-offset:-2px}
