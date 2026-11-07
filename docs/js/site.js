@@ -108,9 +108,9 @@ $('#skipLink').addEventListener('click',e=>{e.preventDefault();const h=document.
 /* ====== header / mobile menu ====== */
 const hdr=$('#hdr'),burger=$('#burger'),nav=$('#nav'),mq=matchMedia('(max-width:900px)');
 addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>30),{passive:true});
-function setMenu(o,returnFocus){nav.classList.toggle('open',o);burger.setAttribute('aria-expanded',String(o));$('#burgerLabel').textContent=o?'סגירת התפריט':'פתיחת התפריט';
-  if(o){const f=nav.querySelector('a');f&&setTimeout(()=>f.focus(),30);}else if(returnFocus)burger.focus();}
-burger.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));
+function setMenu(o,returnFocus,kbd){nav.classList.toggle('open',o);burger.setAttribute('aria-expanded',String(o));$('#burgerLabel').textContent=o?'סגירת התפריט':'פתיחת התפריט';
+  if(o&&kbd){const f=nav.querySelector('a');f&&setTimeout(()=>f.focus(),30);}else if(returnFocus)burger.focus();}
+burger.addEventListener('click',e=>setMenu(!nav.classList.contains('open'),false,e.detail===0));
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
 document.addEventListener('click',e=>{if(nav.classList.contains('open')&&!nav.contains(e.target)&&!burger.contains(e.target))setMenu(false)});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open')){setMenu(false,true);}});
