@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.dudvan-clinic.co.il/sitemap.xml
+Sitemap: https://duvdevan-kids.co.il/sitemap.xml

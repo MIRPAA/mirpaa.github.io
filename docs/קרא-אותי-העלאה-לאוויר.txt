@@ -15,7 +15,8 @@ robots.txt, sitemap.xml, site.webmanifest   קבצים למנועי חיפוש �
 
 לפני ההעלאה – לבדוק
 -------------------
-1. כתובת האתר: הקבצים מוגדרים לכתובת https://www.dudvan-clinic.co.il
+1. כתובת האתר: הקבצים מוגדרים לכתובת https://duvdevan-kids.co.il (בלי www).
+   מומלץ שהכתובת עם www תפנה אוטומטית (301) לכתובת בלי www. ב-Netlify הקובץ _redirects עושה זאת.
    אם הכתובת שונה, יש להחליף אותה בכל קבצי ה-HTML (כולל בתיקיות team, rent, accessibility), ב-robots.txt וב-sitemap.xml.
 2. יש להעלות את כל התיקייה כמו שהיא, לשורש האתר (לא לתת-תיקייה).
 
@@ -33,14 +34,14 @@ robots.txt, sitemap.xml, site.webmanifest   קבצים למנועי חיפוש �
 - מפת Google החיה בחלק "דרכי הגעה" תופיע אוטומטית.
 - מומלץ לרשום את האתר ב-Google Search Console ולהגיש את sitemap.xml – כך גוגל יגלה מהר את כל העמודים, כולל העמודים האישיים של אנשי הצוות.
 - קישורים ישירים לשליחה, לדוגמה:
-  https://www.dudvan-clinic.co.il/team/shai/    ד"ר שי שמש
-  https://www.dudvan-clinic.co.il/team/dafna/   ד"ר דפנה נסלרוט
-  https://www.dudvan-clinic.co.il/team/orly/    ד"ר אורלי אוחנה
-  https://www.dudvan-clinic.co.il/team/leah/    ד"ר לאה אלקובי
-  https://www.dudvan-clinic.co.il/team/nofar/   נופר ברקני רמות
-  https://www.dudvan-clinic.co.il/team/fanny/   פאני לביא-טרבלסי
-  https://www.dudvan-clinic.co.il/team/tal/     טל הדס
-  https://www.dudvan-clinic.co.il/team/lital/   ליטל יצחק
-  https://www.dudvan-clinic.co.il/rent/         השכרת מרפאות
+  https://duvdevan-kids.co.il/team/shai/    ד"ר שי שמש
+  https://duvdevan-kids.co.il/team/dafna/   ד"ר דפנה נסלרוט
+  https://duvdevan-kids.co.il/team/orly/    ד"ר אורלי אוחנה
+  https://duvdevan-kids.co.il/team/leah/    ד"ר לאה אלקובי
+  https://duvdevan-kids.co.il/team/nofar/   נופר ברקני רמות
+  https://duvdevan-kids.co.il/team/fanny/   פאני לביא-טרבלסי
+  https://duvdevan-kids.co.il/team/tal/     הדס טל
+  https://duvdevan-kids.co.il/team/lital/   ליטל יצחק
+  https://duvdevan-kids.co.il/rent/         השכרת מרפאות
 - מומלץ לפתוח / לעדכן פרופיל Google Business של המרפאה עם אותה כתובת.
 - טופס "מעוניינים בחדר?" שולח הודעת וואטסאפ – אין צורך בשרת.
