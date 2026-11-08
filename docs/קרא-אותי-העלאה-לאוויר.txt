@@ -41,7 +41,7 @@ robots.txt, sitemap.xml, site.webmanifest   קבצים למנועי חיפוש �
   https://duvdevan-kids.co.il/team/nofar/   נופר ברקני רמות
   https://duvdevan-kids.co.il/team/fanny/   פאני לביא-טרבלסי
   https://duvdevan-kids.co.il/team/tal/     הדס טל
-  https://duvdevan-kids.co.il/team/lital/   ליטל יצחק
+  https://duvdevan-kids.co.il/team/lital/   ליטל יצחק אמסלם
   https://duvdevan-kids.co.il/rent/         השכרת מרפאות
 - מומלץ לפתוח / לעדכן פרופיל Google Business של המרפאה עם אותה כתובת.
 - טופס "מעוניינים בחדר?" שולח הודעת וואטסאפ – אין צורך בשרת.
